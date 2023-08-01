@@ -1,10 +1,8 @@
-"use client";
-
-import Image from "next/image";
-import { Product } from "@/app/features/products";
-import { Button } from "@/app/components";
-import { useBasket } from "@/app/features/basket";
 import { useCallback } from "react";
+import Image from "next/image";
+import { Product } from "@/features/products";
+import { Button } from "@/components";
+import { useBasket } from "@/features/basket";
 
 export function Item(product: Product) {
   const basket = useBasket();

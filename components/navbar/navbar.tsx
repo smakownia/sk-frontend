@@ -1,7 +1,5 @@
-"use client";
-
-import { Logo } from "@/app/components";
-import { BasketDisclosure } from "@/app/features/basket";
+import { Logo } from "@/components";
+import { BasketDisclosure } from "@/features/basket";
 
 export function Navbar() {
   return (

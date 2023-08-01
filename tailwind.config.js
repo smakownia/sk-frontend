@@ -1,6 +1,10 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: ["./app/**/*.{js,ts,jsx,tsx,mdx}"],
+  content: [
+    "./pages/**/*.{js,ts,jsx,tsx,mdx}",
+    "./components/**/*.{js,ts,jsx,tsx,mdx}",
+    "./features/**/*.{js,ts,jsx,tsx,mdx}",
+  ],
   theme: {
     container: {
       center: true,
@@ -12,6 +16,9 @@ module.exports = {
     borderRadius: {
       DEFAULT: "0.5rem",
       full: "999px",
+    },
+    fontFamily: {
+      sans: ["Fira Sans", "sans-serif"],
     },
     extend: {
       colors: {

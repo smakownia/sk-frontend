@@ -1,13 +1,10 @@
-import { fetchClient } from "@/app/lib/fetch-client";
+import { axiosClient } from "@/lib/axios";
 import { Product } from ".";
 
-export const productsService = {
-  async get(): Promise<Product[]> {
-    const res = await fetchClient("api/v1/products", { cache: "no-store" });
-    return await res.json();
-  },
-  async getById(id: string): Promise<Product> {
-    const res = await fetchClient(`api/v1/products/${id}`);
-    return await res.json();
-  },
-};
+export async function getAllProducts() {
+  return await axiosClient<Product[]>("api/v1/products");
+}
+
+export async function getProductById(id: string) {
+  return await axiosClient<Product>(`api/v1/products/${id}`);
+}

@@ -7,7 +7,7 @@ export const ButtonBadge = forwardRef<HTMLDivElement, { children: ReactNode }>(
         ref={ref}
         className="absolute -top-1 -right-1 p-1 rounded-full bg-primary-500"
       >
-        <span className="flex justify-center items-center min-w-[8px] h-[8px] text-xs">
+        <span className="flex justify-center items-center min-w-[8px] h-[8px] text-xs text-white">
           {children}
         </span>
       </div>
