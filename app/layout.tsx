@@ -1,13 +1,13 @@
 import "./globals.css";
 import { ReactNode } from "react";
-import { Inter } from "next/font/google";
+import { Fira_Sans } from "next/font/google";
 
-const inter = Inter({ subsets: ["latin"] });
+const font = Fira_Sans({ subsets: ["cyrillic"], weight: ["400", "500"] });
 
 function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="pl">
-      <body className={inter.className}>{children}</body>
+      <body className={font.className}>{children}</body>
     </html>
   );
 }
