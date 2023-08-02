@@ -8,7 +8,7 @@ export const CloseIcon = forwardRef<SVGSVGElement, ComponentProps<"svg">>(
         <path
           d="M1 13L13 1M1 1L13 13"
           stroke="currentColor"
-          strokeWidth="1.55"
+          strokeWidth="1.5"
           strokeLinecap="round"
           strokeLinejoin="round"
         />
@@ -16,3 +16,5 @@ export const CloseIcon = forwardRef<SVGSVGElement, ComponentProps<"svg">>(
     );
   },
 );
+
+CloseIcon.displayName = "CloseIcon";

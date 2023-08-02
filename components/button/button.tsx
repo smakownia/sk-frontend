@@ -8,7 +8,9 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
     const classNameMerged = useMemo(
       () =>
         twMerge(
-          "relative py-2 px-4 rounded font-medium text-white bg-primary-500 hover:bg-primary-600 transition-colors",
+          `relative flex justify-center items-center py-2 px-4 rounded font-medium
+           text-white bg-primary-500 transition-colors hover:bg-primary-600 
+           disabled:pointer-events-none`,
           className,
         ),
       [className],

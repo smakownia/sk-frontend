@@ -1,11 +1,14 @@
 import { createContext } from "react";
-import { Basket, BasketItem } from "@/features/basket";
+import {
+  AddBasketItemCommand,
+  Basket,
+  UpdateBasketItemCommand,
+} from "@/features/basket";
 
 type BasketContextType = null | {
   value?: Basket;
-  itemsCount: number;
-  addItem: (item: BasketItem) => void;
-  updateItem: (item: BasketItem) => void;
+  addItem: (item: AddBasketItemCommand) => void;
+  updateItem: (item: UpdateBasketItemCommand) => void;
   removeItem: (id: string) => void;
 };
 

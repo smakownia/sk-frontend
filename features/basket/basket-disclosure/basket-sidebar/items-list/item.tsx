@@ -1,34 +1,50 @@
+import { useCallback } from "react";
 import Image from "next/image";
-import { CloseIcon } from "@/components";
-import { BasketItem } from "@/features/basket";
-import { useItem } from "./use-item";
+import { CloseIcon, NumberInput } from "@/components";
+import { BasketItem, useBasket } from "@/features/basket";
 
-export function Item(item: BasketItem) {
-  const { product, removeFromBasket } = useItem(item);
+export function Item(props: BasketItem) {
+  const { id, name, description, quantity, totalPrice } = props;
+  const basket = useBasket();
 
-  if (!product) {
-    return null;
-  }
+  const updateInBasket = useCallback(
+    (quantity: number) => {
+      basket.updateItem({ id, quantity });
+    },
+    [basket, props],
+  );
+
+  const removeFromBasket = useCallback(() => {
+    basket.removeItem(id);
+  }, [basket, id]);
 
   return (
     <li className="flex gap-4 py-4">
       <Image
-        alt={product.name}
-        src={`/${product.name}.png`}
+        alt={name}
+        src={`/${name}.png`}
         width="64"
         height="64"
         className="self-start"
       />
       <div>
-        <header className="flex justify-between">
-          <h2 className="text-lg font-medium">{product.name}</h2>
+        <header className="flex justify-between mb-2">
+          <h2 className="text-lg font-medium">{name}</h2>
           <CloseIcon
             className="w-[10px] h-[10px] cursor-pointer"
             onClick={removeFromBasket}
           />
         </header>
-        <p className="text-sm text-neutral-600">{product.description}</p>
-        <span className="font-medium">{product.price / 100}zł</span>
+        <p className="text-sm text-neutral-600 mb-2">{description}</p>
+        <div className="flex justify-between items-center">
+          <NumberInput
+            value={quantity}
+            onChange={updateInBasket}
+            min={1}
+            max={999}
+          />
+          <span className="font-medium">{totalPrice.formatted}</span>
+        </div>
       </div>
     </li>
   );

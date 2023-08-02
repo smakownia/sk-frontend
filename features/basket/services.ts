@@ -1,5 +1,10 @@
 import { axiosClient } from "@/lib/axios";
-import { Basket, BasketItem } from "@/features/basket/types";
+import {
+  AddBasketItemCommand,
+  Basket,
+  BasketItem,
+  UpdateBasketItemCommand,
+} from "@/features/basket/types";
 
 export async function getBasket() {
   return await axiosClient.get<Basket>("api/v1/basket", {
@@ -7,13 +12,13 @@ export async function getBasket() {
   });
 }
 
-export async function addBasketItem(item: BasketItem) {
+export async function addBasketItem(item: AddBasketItemCommand) {
   return await axiosClient.post<Basket>("api/v1/basket/items", item, {
     withCredentials: true,
   });
 }
 
-export async function updateBasketItem(item: BasketItem) {
+export async function updateBasketItem(item: UpdateBasketItemCommand) {
   return await axiosClient.put<Basket>(`api/v1/basket/items/${item.id}`, item, {
     withCredentials: true,
   });

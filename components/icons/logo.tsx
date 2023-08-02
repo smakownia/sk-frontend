@@ -27,3 +27,5 @@ export const Logo = forwardRef<SVGSVGElement, ComponentProps<"svg">>(
     );
   },
 );
+
+Logo.displayName = "Logo";

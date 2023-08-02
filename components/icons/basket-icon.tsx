@@ -15,3 +15,5 @@ export const BasketIcon = forwardRef<SVGSVGElement, ComponentProps<"svg">>(
     );
   },
 );
+
+BasketIcon.displayName = "BasketIcon";
