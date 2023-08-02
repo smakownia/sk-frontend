@@ -27,7 +27,7 @@ export function Item(props: BasketItem) {
         height="64"
         className="self-start"
       />
-      <div>
+      <div className="w-full">
         <header className="flex justify-between mb-2">
           <h2 className="text-lg font-medium">{name}</h2>
           <CloseIcon
