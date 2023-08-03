@@ -2,7 +2,6 @@ import { axiosClient } from "@/lib/axios";
 import {
   AddBasketItemCommand,
   Basket,
-  BasketItem,
   UpdateBasketItemCommand,
 } from "@/features/basket/types";
 

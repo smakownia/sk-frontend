@@ -28,14 +28,16 @@ export function Item(props: BasketItem) {
         className="self-start"
       />
       <div className="w-full">
-        <header className="flex justify-between mb-2">
+        <header className="flex justify-between gap-2 mb-1">
           <h2 className="text-lg font-medium">{name}</h2>
           <CloseIcon
-            className="w-[10px] h-[10px] cursor-pointer"
+            className="min-w-[10px] w-[10px] min-h-[10px] h-[10px] cursor-pointer"
             onClick={removeFromBasket}
           />
         </header>
-        <p className="text-sm text-neutral-600 mb-2">{description}</p>
+        {description && (
+          <p className="text-sm text-neutral-600 mb-2">{description}</p>
+        )}
         <div className="flex justify-between items-center">
           <NumberInput
             value={quantity}
