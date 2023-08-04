@@ -1,9 +1,10 @@
-import { Fragment, useMemo } from "react";
-import { Transition } from "@headlessui/react";
+import { ComponentProps, Fragment, useMemo } from "react";
+import { Dialog, Transition } from "@headlessui/react";
 import { twMerge } from "tailwind-merge";
-import { SidebarProps } from "./types";
 
-export function Content({ children, className, ...rest }: SidebarProps) {
+type PanelProps = ComponentProps<"aside">;
+
+export function Panel({ children, className, ...rest }: PanelProps) {
   const classNameMerged = useMemo(
     () => twMerge("z-10 absolute top-0 right-0", className),
     [className],
@@ -19,9 +20,9 @@ export function Content({ children, className, ...rest }: SidebarProps) {
       leaveFrom="translate-x-0"
       leaveTo="translate-x-full"
     >
-      <aside className={classNameMerged} {...rest}>
+      <Dialog.Panel className={classNameMerged} {...rest}>
         {children}
-      </aside>
+      </Dialog.Panel>
     </Transition.Child>
   );
 }

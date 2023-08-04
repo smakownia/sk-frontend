@@ -16,7 +16,8 @@ export function NumberInput(props: NumberInputProps) {
   return (
     <div className="flex w-fit rounded divide-x divide-neutral-100 border border-neutral-100">
       <Button
-        className="w-6 h-6 p-0 rounded-tr-none rounded-br-none text-black bg-white hover:bg-neutral-50"
+        className="w-6 h-6 p-0 rounded-tr-none rounded-br-none"
+        colorScheme="white"
         onClick={decrementValue}
         disabled={isDecrementDisabled}
       >
@@ -29,7 +30,8 @@ export function NumberInput(props: NumberInputProps) {
         onBlur={inputBlurHandler}
       />
       <Button
-        className="w-6 h-6 p-0 rounded-tl-none rounded-bl-none text-black bg-white hover:bg-neutral-50"
+        className="w-6 h-6 p-0 rounded-tl-none rounded-bl-none"
+        colorScheme="white"
         onClick={incrementValue}
         disabled={isIncrementDisabled}
       >

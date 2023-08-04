@@ -1,4 +1,4 @@
 export * from "./types";
 export * from "./services";
 export * from "./basket-context";
-export * from "./basket-disclosure";
+export * from "./basket-drawer-context";

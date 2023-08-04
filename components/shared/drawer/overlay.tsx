@@ -1,7 +1,7 @@
 import { Fragment } from "react";
-import { Disclosure, Transition } from "@headlessui/react";
+import { Transition } from "@headlessui/react";
 
-export function Background() {
+export function Overlay() {
   return (
     <Transition.Child
       as={Fragment}
@@ -12,7 +12,7 @@ export function Background() {
       leaveFrom="opacity-100"
       leaveTo="opacity-0"
     >
-      <Disclosure.Button className="absolute inset-0 w-full h-full bg-[#0000004D]" />
+      <div className="absolute inset-0 w-full h-full bg-[#0000004D]" />
     </Transition.Child>
   );
 }
