@@ -1,6 +1,7 @@
 import { useMemo } from "react";
 import { BasketIcon, Button } from "@/components";
 import { useBasket, useBasketDrawer } from "@/features/basket";
+import { NavButton } from "./nav-button";
 
 export function BasketButton() {
   const basket = useBasket();
@@ -12,13 +13,9 @@ export function BasketButton() {
   );
 
   return (
-    <Button
-      className="px-2"
-      colorScheme="primaryLight"
-      onClick={basketDrawer.open}
-    >
-      {anyItems && <Button.Badge>{basket.value?.totalItems}</Button.Badge>}
-      <BasketIcon className="w-5 h-5" />
-    </Button>
+    <NavButton onClick={basketDrawer.open}>
+      {anyItems && <Button.Badge>{basket.value!.totalItems}</Button.Badge>}
+      <BasketIcon />
+    </NavButton>
   );
 }

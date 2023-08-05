@@ -1,32 +1,34 @@
-import { BasketIcon, Button, Logo } from "@/components";
-import { NavLink } from "./nav-link";
+import { Logo } from "@/components";
+import { Menu } from "./types";
 import { BasketButton } from "./basket-button";
+import { NavMenuDesktop, NavMenuMobile } from "./nav-menu";
+
+const menu: Menu = [
+  { name: "Strona Główna", href: "/" },
+  { name: "Menu", href: "/menu" },
+  { name: "Kontakt", href: "/kontakt" },
+];
 
 export function Navbar() {
   return (
     <nav className="z-10 fixed top-0 left-0 flex items-center h-16 w-full border-b border-neutral-50 bg-white">
       <div className="container flex items-center h-full">
-        <Button className="md:hidden">x</Button>
+        <Logo />
 
-        <Logo className="ml-4 md:m-0" />
+        <NavMenuDesktop menu={menu} />
 
-        <ul className="hidden md:flex h-full gap-8 ml-16">
-          <li>
-            <NavLink href="/">Strona Główna</NavLink>
-          </li>
-          <li>
-            <NavLink href="/menu">Menu</NavLink>
-          </li>
-          <li>
-            <NavLink href="/kontakt">Kontakt</NavLink>
-          </li>
-        </ul>
+        <NavMenuMobile>
+          <ul className="flex gap-4 ml-auto">
+            <li>
+              <BasketButton />
+            </li>
+            <li>
+              <NavMenuMobile.Button />
+            </li>
+          </ul>
 
-        <ul className="md:block ml-auto">
-          <li>
-            <BasketButton />
-          </li>
-        </ul>
+          <NavMenuMobile.Panel menu={menu} />
+        </NavMenuMobile>
       </div>
     </nav>
   );

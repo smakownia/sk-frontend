@@ -1,13 +1,13 @@
-import { ComponentProps, Fragment, useMemo } from "react";
+import { ComponentProps, Fragment } from "react";
 import { Dialog, Transition } from "@headlessui/react";
-import { twMerge } from "tailwind-merge";
+import { useMergedClassName } from "@/hooks";
 
 type PanelProps = ComponentProps<"aside">;
 
 export function Panel({ children, className, ...rest }: PanelProps) {
-  const classNameMerged = useMemo(
-    () => twMerge("z-10 absolute top-0 right-0", className),
-    [className],
+  const classNameMerged = useMergedClassName(
+    "z-10 absolute top-0 right-0",
+    className,
   );
 
   return (

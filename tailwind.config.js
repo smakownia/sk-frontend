@@ -15,7 +15,7 @@ module.exports = {
     },
     container: {
       center: true,
-      padding: "2rem",
+      padding: "1rem",
       screens: {
         DEFAULT: "1280px",
       },
@@ -43,6 +43,7 @@ module.exports = {
           900: "#7E1810",
         },
         neutral: {
+          10: "#F9FAFB",
           50: "#EFEFEF",
           100: "#E3E3E3",
           200: "#C8C8C8",

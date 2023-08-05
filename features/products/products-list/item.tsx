@@ -14,7 +14,7 @@ export function Item({ id, name, description, price }: Product) {
   return (
     <li className="flex flex-col">
       <div className="relative aspect-square mb-4">
-        <Image alt={name} src={`/${name}.png`} fill />
+        <Image alt={name} src={`/${name}.png`} fill priority />
       </div>
 
       <h2 className="mb-2 text-2xl font-medium">{name}</h2>
