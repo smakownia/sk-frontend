@@ -11,12 +11,12 @@ export function Item(props: BasketItem) {
     (quantity: number) => {
       basket.updateItem({ id, quantity });
     },
-    [basket, props],
+    [basket.updateItem, props],
   );
 
   const removeFromBasket = useCallback(() => {
     basket.removeItem(id);
-  }, [basket, id]);
+  }, [basket.removeItem, id]);
 
   return (
     <li className="flex gap-4 py-4">
@@ -31,7 +31,7 @@ export function Item(props: BasketItem) {
         <header className="flex justify-between gap-2 mb-1">
           <h2 className="text-lg font-medium">{name}</h2>
           <CloseIcon
-            className="min-w-[10px] w-[10px] min-h-[10px] h-[10px] cursor-pointer"
+            className="shrink-0 w-[10px] h-[10px] cursor-pointer"
             onClick={removeFromBasket}
           />
         </header>

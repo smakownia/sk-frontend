@@ -1,6 +1,6 @@
 import { useContext } from "react";
-import { BasketContext } from "./basket-context";
 import { ContextNullError } from "@/lib/errors";
+import { BasketContext } from "./basket-context";
 
 export function useBasket() {
   const basketContext = useContext(BasketContext);

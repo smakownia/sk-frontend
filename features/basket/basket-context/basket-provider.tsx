@@ -40,12 +40,7 @@ export function BasketProvider({ children }: { children: ReactNode }) {
 
   return (
     <BasketContext.Provider
-      value={{
-        value: basket,
-        addItem,
-        updateItem,
-        removeItem,
-      }}
+      value={{ value: basket, addItem, updateItem, removeItem }}
     >
       {children}
     </BasketContext.Provider>
