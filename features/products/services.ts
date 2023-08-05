@@ -11,6 +11,12 @@ export async function getAllProducts(categoryId?: string) {
   });
 }
 
-export async function getProductById(id: string) {
-  return apiClient<Product>(`api/v1/products/${id}`);
+export async function getAllCategoriesWithProducts() {
+  const { data: categories } = await getAllCategories();
+
+  const products = await Promise.all<Product[]>(
+    categories.map(async ({ id }) => (await getAllProducts(id)).data),
+  );
+
+  return { categories, products };
 }

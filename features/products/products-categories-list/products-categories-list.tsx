@@ -10,7 +10,7 @@ export function ProductsCategoriesList(props: ProductsCategoriesListProps) {
   const { categories, products } = props;
 
   return (
-    <main className="container flex flex-col gap-16 py-12">
+    <main className="container flex flex-col gap-16 py-8">
       {categories.map((c, i) => (
         <ProductsCategoryList key={c.id} category={c} products={products[i]} />
       ))}
