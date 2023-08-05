@@ -7,7 +7,7 @@ export function NavMenuDesktop({ menu }: NavMenuDesktopProps) {
   return (
     <ul className="hidden md:flex h-full gap-8 ml-16">
       {menu.map(({ name, href }) => (
-        <li>
+        <li key={name}>
           <NavLinkDesktop href={href}>{name}</NavLinkDesktop>
         </li>
       ))}

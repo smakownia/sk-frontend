@@ -1,9 +1,9 @@
+import { Menu } from "@headlessui/react";
 import { Logo } from "@/components";
-import { Menu } from "./types";
 import { BasketButton } from "./basket-button";
-import { NavMenuDesktop, NavMenuMobile } from "./nav-menu";
+import { NavMenuDesktop, NavMenuMobile, NavMenuMobileButton } from "./nav-menu";
 
-const menu: Menu = [
+const menu = [
   { name: "Strona Główna", href: "/" },
   { name: "Menu", href: "/menu" },
   { name: "Kontakt", href: "/kontakt" },
@@ -17,18 +17,18 @@ export function Navbar() {
 
         <NavMenuDesktop menu={menu} />
 
-        <NavMenuMobile>
+        <Menu>
           <ul className="flex gap-4 ml-auto">
             <li>
               <BasketButton />
             </li>
             <li>
-              <NavMenuMobile.Button />
+              <NavMenuMobileButton />
             </li>
           </ul>
 
-          <NavMenuMobile.Panel menu={menu} />
-        </NavMenuMobile>
+          <NavMenuMobile menu={menu} />
+        </Menu>
       </div>
     </nav>
   );

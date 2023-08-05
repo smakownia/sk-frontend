@@ -23,7 +23,7 @@ export function NavMenuMobile({ menu }: NavMenuMobileProps) {
       className="md:hidden absolute top-full left-0 flex flex-col w-full border-b border-neutral-50 bg-white"
     >
       {menu.map(({ name, href }) => (
-        <li>
+        <li key={name}>
           <Menu.Item as={NavLinkMobile} href={href}>
             {name}
           </Menu.Item>
