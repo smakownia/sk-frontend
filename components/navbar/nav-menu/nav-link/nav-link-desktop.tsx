@@ -17,3 +17,5 @@ export const NavLinkDesktop = forwardRef<
     </NavLink>
   );
 });
+
+NavLinkDesktop.displayName = "NavLinkDesktop";

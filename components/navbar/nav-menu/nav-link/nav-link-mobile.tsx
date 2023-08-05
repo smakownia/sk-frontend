@@ -18,3 +18,5 @@ export const NavLinkMobile = forwardRef<HTMLAnchorElement, NavLinkMobileProps>(
     );
   },
 );
+
+NavLinkMobile.displayName = "NavLinkMobile";

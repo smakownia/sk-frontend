@@ -20,3 +20,5 @@ export const NavButton = forwardRef<HTMLButtonElement, NavButtonProps>(
     );
   },
 );
+
+NavButton.displayName = "NavButton";

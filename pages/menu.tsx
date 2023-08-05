@@ -1,27 +1,38 @@
 import { GetServerSideProps, NextPage } from "next";
-import { getAllProducts, Product, ProductsList } from "@/features/products";
 import Head from "next/head";
+import {
+  Category,
+  getAllCategories,
+  getAllProducts,
+  Product,
+  ProductsCategoriesList,
+} from "@/features/products";
 
 type MenuPageProps = {
-  products: Product[];
+  categories: Category[];
+  products: Product[][];
 };
 
-const MenuPage: NextPage<MenuPageProps> = ({ products }) => {
+const MenuPage: NextPage<MenuPageProps> = ({ categories, products }) => {
   return (
     <div className="pt-16 pb-8">
       <Head>
         <title>Menu - Smakownia</title>
       </Head>
 
-      <ProductsList products={products} />
+      <ProductsCategoriesList categories={categories} products={products} />
     </div>
   );
 };
 
 export const getServerSideProps: GetServerSideProps = async () => {
-  const { data: products } = await getAllProducts();
+  const { data: categories } = await getAllCategories();
 
-  return { props: { products } };
+  const products = await Promise.all<Product[]>(
+    categories.map(async ({ id }) => (await getAllProducts(id)).data),
+  );
+
+  return { props: { categories, products } };
 };
 
 export default MenuPage;

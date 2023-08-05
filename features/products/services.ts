@@ -1,10 +1,16 @@
-import { axiosClient } from "@/lib/axios";
-import { Product } from ".";
+import { apiClient } from "@/lib/clients";
+import { Category, Product } from ".";
 
-export async function getAllProducts() {
-  return await axiosClient<Product[]>("api/v1/products");
+export async function getAllCategories() {
+  return apiClient<Category[]>("api/v1/categories");
+}
+
+export async function getAllProducts(categoryId?: string) {
+  return apiClient<Product[]>("api/v1/products", {
+    params: { categoryId },
+  });
 }
 
 export async function getProductById(id: string) {
-  return await axiosClient<Product>(`api/v1/products/${id}`);
+  return apiClient<Product>(`api/v1/products/${id}`);
 }

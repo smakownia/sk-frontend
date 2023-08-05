@@ -1,6 +1,6 @@
 import axios from "axios";
 import { getApiUrl } from "@/lib/utils";
 
-export const axiosClient = axios.create({
+export const apiClient = axios.create({
   baseURL: getApiUrl(),
 });

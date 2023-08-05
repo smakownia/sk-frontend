@@ -16,6 +16,6 @@ export const Portal = ({ children, id }: PortalProps) => {
   }, []);
 
   return mounted
-    ? createPortal(children, document.querySelector(`#${id}`))
+    ? createPortal(children, document.querySelector(`#${id}`)!)
     : null;
 };

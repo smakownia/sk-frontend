@@ -4,7 +4,7 @@ import { useMergedClassName } from "@/hooks";
 
 type PanelProps = ComponentProps<"aside">;
 
-export function Panel({ children, className, ...rest }: PanelProps) {
+export function Panel({ children, className, ref, ...rest }: PanelProps) {
   const classNameMerged = useMergedClassName(
     "z-10 absolute top-0 right-0",
     className,
