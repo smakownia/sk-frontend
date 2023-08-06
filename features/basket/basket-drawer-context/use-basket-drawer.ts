@@ -5,7 +5,7 @@ import { BasketDrawerContext } from "./basket-drawer-context";
 export function useBasketDrawer() {
   const basketDrawerContext = useContext(BasketDrawerContext);
 
-  if (!basketDrawerContext) {
+  if (basketDrawerContext === null) {
     throw new ContextNullError(BasketDrawerContext.displayName);
   }
 

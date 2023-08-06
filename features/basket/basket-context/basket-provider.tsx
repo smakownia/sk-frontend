@@ -1,4 +1,4 @@
-import { ReactNode, useCallback, useEffect, useState } from "react";
+import { ReactNode, useCallback, useEffect, useMemo, useState } from "react";
 import {
   addBasketItem,
   AddBasketItemCommand,
@@ -8,41 +8,53 @@ import {
   updateBasketItem,
   UpdateBasketItemCommand,
 } from "@/features/basket";
-import { BasketContext } from "./basket-context";
+import { BasketStateContext, BasketUpdaterContext } from "./basket-context";
 
 export function BasketProvider({ children }: { children: ReactNode }) {
   const [basket, setBasket] = useState<Basket>();
 
   const addItem = useCallback(
-    (command: AddBasketItemCommand) => {
-      addBasketItem(command).then((res) => setBasket(res.data));
+    async (command: AddBasketItemCommand) => {
+      const { data } = await addBasketItem(command);
+      setBasket(data);
     },
     [setBasket],
   );
 
   const updateItem = useCallback(
-    (command: UpdateBasketItemCommand) => {
-      updateBasketItem(command).then((res) => setBasket(res.data));
+    async (command: UpdateBasketItemCommand) => {
+      const { data } = await updateBasketItem(command);
+      setBasket(data);
     },
     [setBasket],
   );
 
   const removeItem = useCallback(
-    (id: string) => {
-      removeBasketItem(id).then((res) => setBasket(res.data));
+    async (id: string) => {
+      const { data } = await removeBasketItem(id);
+      setBasket(data);
     },
     [setBasket],
   );
 
   useEffect(() => {
-    getBasket().then((res) => setBasket(res.data));
+    async function getAndSetBasket() {
+      const { data } = await getBasket();
+      setBasket(data);
+    }
+
+    void getAndSetBasket();
   }, [setBasket]);
 
+  const updaterValue = useMemo(() => {
+    return { addItem, updateItem, removeItem };
+  }, [addItem, updateItem, removeItem]);
+
   return (
-    <BasketContext.Provider
-      value={{ value: basket, addItem, updateItem, removeItem }}
-    >
-      {children}
-    </BasketContext.Provider>
+    <BasketStateContext.Provider value={basket}>
+      <BasketUpdaterContext.Provider value={updaterValue}>
+        {children}
+      </BasketUpdaterContext.Provider>
+    </BasketStateContext.Provider>
   );
 }

@@ -1,13 +1,23 @@
 import { useContext } from "react";
 import { ContextNullError } from "@/lib/errors";
-import { BasketContext } from "./basket-context";
+import { BasketStateContext, BasketUpdaterContext } from "./basket-context";
 
-export function useBasket() {
-  const basketContext = useContext(BasketContext);
+export function useBasketState() {
+  const basketStateContext = useContext(BasketStateContext);
 
-  if (!basketContext) {
-    throw new ContextNullError(BasketContext.displayName);
+  if (basketStateContext === null) {
+    throw new ContextNullError(BasketStateContext.displayName);
   }
 
-  return basketContext;
+  return basketStateContext;
+}
+
+export function useBasketUpdater() {
+  const basketUpdaterContext = useContext(BasketUpdaterContext);
+
+  if (basketUpdaterContext === null) {
+    throw new ContextNullError(BasketUpdaterContext.displayName);
+  }
+
+  return basketUpdaterContext;
 }

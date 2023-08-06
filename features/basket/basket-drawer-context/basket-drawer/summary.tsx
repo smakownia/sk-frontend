@@ -1,8 +1,8 @@
 import { Button } from "@/components";
-import { useBasket } from "@/features/basket";
+import { useBasketState } from "@/features/basket";
 
 export function Summary() {
-  const basket = useBasket();
+  const basketState = useBasketState();
 
   return (
     <footer className="flex">
@@ -10,7 +10,7 @@ export function Summary() {
         <div className="flex justify-between mb-4">
           <h3 className="text-lg">Wartość</h3>
           <span className="text-lg font-medium">
-            {basket.value?.totalPrice.formatted}
+            {basketState?.totalPrice.formatted}
           </span>
         </div>
         <Button className="w-full">Dostawa i Płatność</Button>

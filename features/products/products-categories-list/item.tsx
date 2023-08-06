@@ -1,15 +1,15 @@
 import { useCallback } from "react";
 import Image from "next/image";
 import { Button } from "@/components";
-import { useBasket } from "@/features/basket";
+import { useBasketUpdater } from "@/features/basket";
 import { Product } from "@/features/products";
 
 export function Item({ id, name, description, price }: Product) {
-  const basket = useBasket();
+  const basketUpdater = useBasketUpdater();
 
   const addToBasket = useCallback(() => {
-    basket.addItem({ id, quantity: 1 });
-  }, [basket.addItem, id]);
+    basketUpdater.addItem({ id, quantity: 1 });
+  }, [basketUpdater, id]);
 
   return (
     <li className="flex flex-col">

@@ -1,22 +1,22 @@
 import { useCallback } from "react";
 import Image from "next/image";
 import { CloseIcon, NumberInput } from "@/components";
-import { BasketItem, useBasket } from "@/features/basket";
+import { BasketItem, useBasketUpdater } from "@/features/basket";
 
 export function Item(props: BasketItem) {
   const { id, name, description, quantity, totalPrice } = props;
-  const basket = useBasket();
+  const basketUpdater = useBasketUpdater();
 
   const updateInBasket = useCallback(
     (quantity: number) => {
-      basket.updateItem({ id, quantity });
+      basketUpdater.updateItem({ id, quantity });
     },
-    [basket.updateItem, props],
+    [basketUpdater.updateItem, props],
   );
 
   const removeFromBasket = useCallback(() => {
-    basket.removeItem(id);
-  }, [basket.removeItem, id]);
+    basketUpdater.removeItem(id);
+  }, [basketUpdater.removeItem, id]);
 
   return (
     <li className="flex gap-4 py-4">
