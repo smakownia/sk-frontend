@@ -1,13 +1,6 @@
-import { useContext } from "react";
-import { ContextNullError } from "@/lib/errors";
 import { BasketDrawerContext } from "./basket-drawer-context";
+import { useContextOrThrow } from "@/hooks";
 
 export function useBasketDrawer() {
-  const basketDrawerContext = useContext(BasketDrawerContext);
-
-  if (basketDrawerContext === null) {
-    throw new ContextNullError(BasketDrawerContext.displayName);
-  }
-
-  return basketDrawerContext;
+  return useContextOrThrow(BasketDrawerContext);
 }

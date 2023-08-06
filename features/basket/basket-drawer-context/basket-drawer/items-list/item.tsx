@@ -1,6 +1,6 @@
 import { useCallback } from "react";
 import Image from "next/image";
-import { CloseIcon, NumberInput } from "@/components";
+import { XIcon, NumberInput } from "@/components";
 import { BasketItem, useBasketUpdater } from "@/features/basket";
 
 export function Item(props: BasketItem) {
@@ -11,15 +11,15 @@ export function Item(props: BasketItem) {
     (quantity: number) => {
       basketUpdater.updateItem({ id, quantity });
     },
-    [basketUpdater.updateItem, props],
+    [basketUpdater, props],
   );
 
   const removeFromBasket = useCallback(() => {
     basketUpdater.removeItem(id);
-  }, [basketUpdater.removeItem, id]);
+  }, [basketUpdater, props]);
 
   return (
-    <li className="flex gap-4 py-4">
+    <li className="flex py-4">
       <Image
         alt={name}
         src={`/${name}.png`}
@@ -27,17 +27,18 @@ export function Item(props: BasketItem) {
         height="64"
         className="self-start"
       />
-      <div className="w-full">
-        <header className="flex justify-between gap-2 mb-1">
-          <h2 className="text-lg font-medium">{name}</h2>
-          <CloseIcon
-            className="shrink-0 w-[10px] h-[10px] cursor-pointer"
-            onClick={removeFromBasket}
-          />
+      <div className="w-full ml-4">
+        <header className="flex mb-2">
+          <h2 className="w-full leading-none text-lg font-medium">{name}</h2>
+          <button className="h-fit pl-2" onClick={removeFromBasket}>
+            <XIcon className="w-[10px] h-[10px]" />
+          </button>
         </header>
+
         {description && (
-          <p className="text-sm text-neutral-600 mb-2">{description}</p>
+          <p className="mb-2 text-sm text-neutral-600">{description}</p>
         )}
+
         <div className="flex justify-between items-center">
           <NumberInput
             value={quantity}

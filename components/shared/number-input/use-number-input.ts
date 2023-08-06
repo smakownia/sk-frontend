@@ -35,7 +35,6 @@ export function useNumberInput(props: NumberInputProps) {
   );
 
   const inputBlurHandler = useCallback(() => {
-    setCurrentValue(value.toString());
     updateValue(parseInt(currentValue, 10));
   }, [updateValue, currentValue, value]);
 

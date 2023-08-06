@@ -1,6 +1,6 @@
 import { ComponentProps, forwardRef } from "react";
 
-export const CloseIcon = forwardRef<SVGSVGElement, ComponentProps<"svg">>(
+export const XIcon = forwardRef<SVGSVGElement, ComponentProps<"svg">>(
   (props, ref) => {
     return (
       <svg
@@ -23,4 +23,4 @@ export const CloseIcon = forwardRef<SVGSVGElement, ComponentProps<"svg">>(
   },
 );
 
-CloseIcon.displayName = "CloseIcon";
+XIcon.displayName = "CloseIcon";

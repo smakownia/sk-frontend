@@ -11,7 +11,8 @@ export function BasketDrawer() {
     <Drawer
       isOpen={drawer.isOpen}
       onClose={drawer.close}
-      className="grid grid-rows-[auto_auto_1fr] w-full sm:w-[360px] h-full bg-white"
+      className={`grid grid-rows-[auto_auto_1fr] w-full sm:w-[360px] h-full 
+                  bg-white divide-y divide-neutral-50`}
     >
       <Header />
       <ItemsList />
