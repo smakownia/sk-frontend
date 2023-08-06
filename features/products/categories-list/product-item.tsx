@@ -4,7 +4,7 @@ import { Button } from "@/components";
 import { useBasketUpdater } from "@/features/basket";
 import { Product } from "@/features/products";
 
-export function Item({ id, name, description, price }: Product) {
+export function ProductItem({ id, name, description, price }: Product) {
   const basketUpdater = useBasketUpdater();
 
   const addToBasket = useCallback(() => {

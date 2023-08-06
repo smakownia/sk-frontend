@@ -3,7 +3,7 @@ import Head from "next/head";
 import type { Category, Product } from "@/features/products";
 import {
   getAllCategoriesWithProducts,
-  ProductsCategoriesList,
+  CategoriesList,
 } from "@/features/products";
 
 type MenuPageProps = {
@@ -18,7 +18,7 @@ const MenuPage: NextPage<MenuPageProps> = ({ categories, products }) => {
         <title>Menu - Smakownia</title>
       </Head>
 
-      <ProductsCategoriesList categories={categories} products={products} />
+      <CategoriesList categories={categories} products={products} />
     </div>
   );
 };
