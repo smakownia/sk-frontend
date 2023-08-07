@@ -10,9 +10,16 @@ export function useNumberInput(props: NumberInputProps) {
 
   const updateValue = useCallback(
     (number: number) => {
-      if (number < min || isNaN(number)) onChange(min);
-      else if (number >= min && number <= max) onChange(number);
-      else onChange(max);
+      if (number < min || isNaN(number)) {
+        setCurrentValue(min.toString());
+        onChange(min);
+      } else if (number >= min && number <= max) {
+        setCurrentValue(number.toString());
+        onChange(number);
+      } else {
+        setCurrentValue(max.toString());
+        onChange(max);
+      }
     },
     [onChange, max, min],
   );
@@ -37,10 +44,6 @@ export function useNumberInput(props: NumberInputProps) {
   const inputBlurHandler = useCallback(() => {
     updateValue(parseInt(currentValue, 10));
   }, [updateValue, currentValue, value]);
-
-  useEffect(() => {
-    setCurrentValue(value.toString());
-  }, [setCurrentValue, value]);
 
   return {
     currentValue,

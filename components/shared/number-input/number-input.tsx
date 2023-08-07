@@ -14,7 +14,7 @@ export function NumberInput(props: NumberInputProps) {
   } = useNumberInput(props);
 
   return (
-    <div className="flex w-fit rounded divide-x divide-neutral-100 border border-neutral-100">
+    <div className="flex rounded divide-x divide-neutral-100 border border-neutral-100">
       <Button
         className="w-6 h-6 p-0 rounded-tr-none rounded-br-none"
         colorScheme="white"
