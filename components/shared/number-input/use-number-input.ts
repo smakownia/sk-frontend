@@ -1,4 +1,4 @@
-import { ChangeEvent, useCallback, useEffect, useMemo, useState } from "react";
+import { ChangeEvent, useCallback, useMemo, useState } from "react";
 import { NumberInputProps } from "./types";
 
 export function useNumberInput(props: NumberInputProps) {
