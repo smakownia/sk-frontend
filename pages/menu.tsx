@@ -1,30 +1,35 @@
 import { GetServerSideProps, NextPage } from "next";
 import Head from "next/head";
-import type { Category, Product } from "@/features/products";
+import { SWRConfig, SWRConfiguration } from "swr";
 import {
-  getAllCategoriesWithProducts,
   CategoriesList,
+  getCategoriesWithProductsFallback,
 } from "@/features/products";
 
 type MenuPageProps = {
-  categories: Category[];
-  products: Product[][];
+  fallback: SWRConfiguration["fallback"];
 };
 
-const MenuPage: NextPage<MenuPageProps> = ({ categories, products }) => {
+const MenuPage: NextPage<MenuPageProps> = ({ fallback }) => {
   return (
-    <div className="pt-16 pb-8">
+    <SWRConfig value={{ fallback }}>
       <Head>
         <title>Menu - Smakownia</title>
       </Head>
 
-      <CategoriesList categories={categories} products={products} />
-    </div>
+      <div className="pt-16 pb-8">
+        <CategoriesList />
+      </div>
+    </SWRConfig>
   );
 };
 
 export const getServerSideProps: GetServerSideProps = async () => {
-  return { props: await getAllCategoriesWithProducts() };
+  return {
+    props: {
+      fallback: await getCategoriesWithProductsFallback(),
+    },
+  };
 };
 
 export default MenuPage;

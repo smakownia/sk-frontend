@@ -6,25 +6,37 @@ import {
 } from "@/features/basket/types";
 
 export async function getBasket() {
-  return apiClient.get<Basket>("api/v1/basket", {
+  const { data } = await apiClient.get<Basket>("api/v1/basket", {
     withCredentials: true,
   });
+
+  return data;
 }
 
 export async function addBasketItem(item: AddBasketItemCommand) {
-  return apiClient.post<Basket>("api/v1/basket/items", item, {
+  const { data } = await apiClient.post<Basket>("api/v1/basket/items", item, {
     withCredentials: true,
   });
+
+  return data;
 }
 
 export async function updateBasketItem(item: UpdateBasketItemCommand) {
-  return apiClient.put<Basket>(`api/v1/basket/items/${item.id}`, item, {
-    withCredentials: true,
-  });
+  const { data } = await apiClient.put<Basket>(
+    `api/v1/basket/items/${item.id}`,
+    item,
+    {
+      withCredentials: true,
+    },
+  );
+
+  return data;
 }
 
 export async function removeBasketItem(id: string) {
-  return apiClient.delete<Basket>(`api/v1/basket/items/${id}`, {
+  const { data } = await apiClient.delete<Basket>(`api/v1/basket/items/${id}`, {
     withCredentials: true,
   });
+
+  return data;
 }

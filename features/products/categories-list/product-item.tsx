@@ -1,15 +1,10 @@
-import { useCallback } from "react";
 import Image from "next/image";
 import { Button } from "@/components";
-import { useBasketUpdater } from "@/features/basket";
+import { useAddBasketItemMutation } from "@/features/basket";
 import { Product } from "@/features/products";
 
 export function ProductItem({ id, name, description, price }: Product) {
-  const basketUpdater = useBasketUpdater();
-
-  const addToBasket = useCallback(() => {
-    basketUpdater.addItem({ id, quantity: 1 });
-  }, [basketUpdater, id]);
+  const { trigger: addToBasket } = useAddBasketItemMutation();
 
   return (
     <li className="flex flex-col">
@@ -23,7 +18,9 @@ export function ProductItem({ id, name, description, price }: Product) {
 
       <div className="flex justify-between items-center mt-auto">
         <span className="text-xl font-medium">{price / 100}zł</span>
-        <Button onClick={addToBasket}>Do koszyka</Button>
+        <Button onClick={() => addToBasket({ id, quantity: 1 })}>
+          Do koszyka
+        </Button>
       </div>
     </li>
   );

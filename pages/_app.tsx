@@ -1,16 +1,23 @@
 import { AppProps } from "next/app";
+import { SWRConfig } from "swr";
 import { Navbar } from "@/components";
-import { BasketDrawerProvider, BasketProvider } from "@/features/basket";
+import { BasketDrawerProvider } from "@/features/basket";
 import "@/styles/globals.css";
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
-    <BasketProvider>
+    <SWRConfig
+      value={{
+        revalidateOnFocus: false,
+        revalidateOnReconnect: false,
+        revalidateIfStale: false,
+      }}
+    >
       <BasketDrawerProvider>
         <Navbar />
         <Component {...pageProps} />
       </BasketDrawerProvider>
-    </BasketProvider>
+    </SWRConfig>
   );
 }
 

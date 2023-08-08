@@ -1,20 +1,17 @@
 import { useMemo } from "react";
 import { BasketIcon, Button } from "@/components";
-import { useBasketDrawer, useBasketState } from "@/features/basket";
+import { useBasket, useBasketDrawer } from "@/features/basket";
 import { NavButton } from "./nav-button";
 
 export function BasketButton() {
-  const basketState = useBasketState();
+  const { data: basket } = useBasket();
   const basketDrawer = useBasketDrawer();
 
-  const anyItems = useMemo(
-    () => Boolean(basketState?.totalItems),
-    [basketState],
-  );
+  const anyItems = useMemo(() => Boolean(basket?.totalItems), [basket]);
 
   return (
     <NavButton onClick={basketDrawer.open}>
-      {anyItems && <Button.Badge>{basketState!.totalItems}</Button.Badge>}
+      {anyItems && <Button.Badge>{basket!.totalItems}</Button.Badge>}
       <BasketIcon />
     </NavButton>
   );

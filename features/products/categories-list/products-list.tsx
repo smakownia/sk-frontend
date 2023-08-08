@@ -1,14 +1,12 @@
-import { Product } from "@/features/products";
+import { useProducts } from "@/features/products";
 import { ProductItem } from "./product-item";
 
-type ProductsCategoryListProps = { products: Product[] };
-
-export function ProductsList(props: ProductsCategoryListProps) {
-  const { products } = props;
+export function ProductsList({ categoryId }: { categoryId: string }) {
+  const { data: products } = useProducts(categoryId);
 
   return (
     <ul className="grid sm:grid-cols-2 lg:grid-cols-4 gap-16">
-      {products.map((product) => (
+      {products?.map((product) => (
         <ProductItem key={product.id} {...product} />
       ))}
     </ul>

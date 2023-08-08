@@ -10,6 +10,8 @@ export function useNumberInput(props: NumberInputProps) {
 
   const updateValue = useCallback(
     (number: number) => {
+      if (number === parseInt(currentValue, 10)) return;
+
       if (number < min || isNaN(number)) {
         setCurrentValue(min.toString());
         onChange(min);

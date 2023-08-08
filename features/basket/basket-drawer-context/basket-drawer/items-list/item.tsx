@@ -1,22 +1,15 @@
-import { useCallback } from "react";
 import Image from "next/image";
 import { XIcon, NumberInput } from "@/components";
-import { BasketItem, useBasketUpdater } from "@/features/basket";
+import {
+  BasketItem,
+  useRemoveBasketItemMutation,
+  useUpdateBasketItemMutation,
+} from "@/features/basket";
 
 export function Item(props: BasketItem) {
   const { id, name, description, quantity, totalPrice } = props;
-  const basketUpdater = useBasketUpdater();
-
-  const updateInBasket = useCallback(
-    (quantity: number) => {
-      basketUpdater.updateItem({ id, quantity });
-    },
-    [basketUpdater, props],
-  );
-
-  const removeFromBasket = useCallback(() => {
-    basketUpdater.removeItem(id);
-  }, [basketUpdater, props]);
+  const { trigger: updateBasketItem } = useUpdateBasketItemMutation();
+  const { trigger: removeBasketItem } = useRemoveBasketItemMutation();
 
   return (
     <li className="flex py-4">
@@ -30,7 +23,7 @@ export function Item(props: BasketItem) {
       <div className="w-full ml-4">
         <header className="flex mb-2">
           <h2 className="w-full leading-none text-lg font-medium">{name}</h2>
-          <button className="h-fit pl-2" onClick={removeFromBasket}>
+          <button className="h-fit pl-2" onClick={() => removeBasketItem(id)}>
             <XIcon className="w-[10px] h-[10px]" />
           </button>
         </header>
@@ -42,7 +35,7 @@ export function Item(props: BasketItem) {
         <div className="flex justify-between items-center">
           <NumberInput
             value={quantity}
-            onChange={updateInBasket}
+            onChange={(quantity) => updateBasketItem({ id, quantity })}
             min={1}
             max={999}
           />
