@@ -9,7 +9,7 @@ type ButtonProps = ComponentProps<"button"> & {
 export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
   ({ children, className, colorScheme = "primary", ...rest }, ref) => {
     const classNameMerged = useMergedClassName(
-      `relative flex justify-center items-center h-fit py-2 px-4 rounded
+      `relative flex justify-center items-center w-fit h-fit py-2 px-4 rounded
       font-medium transition-colors disabled:pointer-events-none`,
       colorSchemeVariants[colorScheme],
       className,

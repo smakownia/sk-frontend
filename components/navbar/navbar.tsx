@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { Menu } from "@headlessui/react";
 import { Logo } from "@/components";
 import { BasketButton } from "./basket-button";
@@ -13,7 +14,9 @@ export function Navbar() {
   return (
     <nav className="z-10 fixed top-0 left-0 flex items-center h-16 w-full border-b border-neutral-50 bg-white">
       <div className="container flex items-center h-full">
-        <Logo />
+        <Link href="/">
+          <Logo />
+        </Link>
 
         <NavMenuDesktop menu={menu} />
 

@@ -1,4 +1,5 @@
 import { createContext } from "react";
+import { useContextOrThrow } from "@/hooks";
 
 type BasketDrawerContextType = null | {
   isOpen: boolean;
@@ -9,3 +10,7 @@ type BasketDrawerContextType = null | {
 export const BasketDrawerContext = createContext<BasketDrawerContextType>(null);
 
 BasketDrawerContext.displayName = "BasketDrawerContext";
+
+export function useBasketDrawer() {
+  return useContextOrThrow(BasketDrawerContext);
+}

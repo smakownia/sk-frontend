@@ -1,4 +1,6 @@
 export * from "./button";
 export * from "./icons";
-export * from "./number-input";
+export * from "./inputs";
+export * from "./label";
 export * from "./drawer";
+export * from "./form";

@@ -1,6 +1,6 @@
 import { unstable_serialize } from "swr";
 import { apiClient } from "@/lib/clients";
-import { Category, Product } from ".";
+import { Category, CreateProductCommand, Product } from "@/features/products";
 
 export async function getCategories() {
   const { data } = await apiClient<Category[]>("api/v1/categories");
@@ -12,6 +12,12 @@ export async function getProducts(categoryId?: string) {
   const { data } = await apiClient<Product[]>("api/v1/products", {
     params: { categoryId },
   });
+
+  return data;
+}
+
+export async function createProduct(command: CreateProductCommand) {
+  const { data } = await apiClient.post<Product>("api/v1/products", command);
 
   return data;
 }

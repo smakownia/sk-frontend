@@ -1,10 +1,14 @@
 import { AppProps } from "next/app";
+import { useRouter } from "next/router";
 import { SWRConfig } from "swr";
 import { Navbar } from "@/components";
 import { BasketDrawerProvider } from "@/features/basket";
 import "@/styles/globals.css";
 
 function MyApp({ Component, pageProps }: AppProps) {
+  const router = useRouter();
+  const isAdminPage = router.pathname.startsWith("/admin");
+
   return (
     <SWRConfig
       value={{
@@ -13,10 +17,14 @@ function MyApp({ Component, pageProps }: AppProps) {
         revalidateIfStale: false,
       }}
     >
-      <BasketDrawerProvider>
-        <Navbar />
+      {isAdminPage ? (
         <Component {...pageProps} />
-      </BasketDrawerProvider>
+      ) : (
+        <BasketDrawerProvider>
+          <Navbar />
+          <Component {...pageProps} />
+        </BasketDrawerProvider>
+      )}
     </SWRConfig>
   );
 }
