@@ -7,18 +7,18 @@ export function AdminProductsList() {
   const { data: products } = useProducts();
 
   return (
-    <div className="mx-auto w-fit rounded border border-neutral-50">
-      <table>
+    <div className="block overflow-x-auto rounded border border-neutral-50">
+      <table className="w-full">
         <thead className="text-left border-b border-neutral-50 bg-neutral-10">
           <tr>
-            <th className="font-medium px-6 py-3">Zdjęcie</th>
-            <th className="font-medium px-6 py-3">Nazwa</th>
-            <th className="font-medium px-6 py-3">Opis</th>
-            <th className="font-medium px-6 py-3">Cena</th>
-            <th className="font-medium px-6 py-3">Akcje</th>
+            <th className="px-6 py-3 font-medium">Zdjęcie</th>
+            <th className="px-6 py-3 font-medium">Nazwa</th>
+            <th className="px-6 py-3 font-medium">Opis</th>
+            <th className="px-6 py-3 font-medium">Cena</th>
+            <th />
           </tr>
         </thead>
-        <tbody>
+        <tbody className="divide-y divide-neutral-50">
           {products?.map((product) => (
             <tr key={product.id}>
               <td className="px-6 py-3">

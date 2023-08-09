@@ -3,9 +3,10 @@ import Link from "next/link";
 
 const AdminPage: NextPage = () => {
   return (
-    <div>
-      <Link href="/admin/produkty">Produkty</Link>
-      <Link href="/admin/kategorie">Kategorie</Link>
+    <div className="flex items-center justify-center min-h-screen">
+      <Link className="btn btn-primary" href="/admin/produkty">
+        Produkty
+      </Link>
     </div>
   );
 };

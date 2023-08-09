@@ -3,6 +3,6 @@ import { CreateProductFormValues } from "./types";
 export const defaultValues: CreateProductFormValues = {
   categoryId: "",
   name: "",
-  description: undefined,
+  description: "",
   price: 0,
 };
