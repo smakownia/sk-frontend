@@ -23,10 +23,10 @@ export function Navbar() {
         <Menu>
           <ul className="flex gap-4 ml-auto">
             <li>
-              <NavMenuMobileButton />
-            </li>
-            <li>
               <BasketButton />
+            </li>
+            <li className="md:hidden">
+              <NavMenuMobileButton />
             </li>
           </ul>
 

@@ -6,7 +6,7 @@ import { NavLinkMobile } from "./nav-link";
 
 export function NavMenuMobileButton() {
   return (
-    <Menu.Button as={NavButton} className="md:hidden">
+    <Menu.Button as={NavButton}>
       <Bars3Icon className="w-5 h-5" />
     </Menu.Button>
   );
