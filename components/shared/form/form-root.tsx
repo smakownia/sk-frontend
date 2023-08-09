@@ -24,7 +24,7 @@ export function FormRoot<T extends Record<string, any>>(
   } = props;
 
   const classNameMarged = useMergedClassName(
-    "flex flex-col w-96 gap-4",
+    "flex flex-col w-96 gap-8",
     className,
   );
 

@@ -1,7 +1,7 @@
 import { ComponentProps, ReactNode } from "react";
 import { ControllerRenderProps, useController } from "react-hook-form";
 import { Input } from "@/components";
-import { useFormFieldName } from "./form-field";
+import { useFormField } from "./form-field";
 
 type FormInputProps =
   | ComponentProps<typeof Input>
@@ -15,7 +15,7 @@ type FormInputProps =
     };
 
 export function FormInput({ children, ...rest }: FormInputProps) {
-  const fieldName = useFormFieldName();
+  const { fieldName } = useFormField();
   const { field, fieldState } = useController({ name: fieldName });
 
   if (typeof children === "function") {

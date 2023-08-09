@@ -1,15 +1,16 @@
 import { ComponentProps } from "react";
-import { useFormFieldName } from "./form-field";
+import { useFormField } from "./form-field";
 import { Label } from "@/components";
 
 type FormLabelProps = ComponentProps<typeof Label>;
 
 export function FormLabel({ children, ...rest }: FormLabelProps) {
-  const fieldName = useFormFieldName();
+  const { fieldName, isRequired } = useFormField();
 
   return (
     <Label htmlFor={fieldName} {...rest}>
       {children ? children : fieldName}
+      {isRequired && <span className="text-red-500"> *</span>}
     </Label>
   );
 }

@@ -1,26 +1,36 @@
-import { ComponentProps, ReactNode, createContext } from "react";
+import { ComponentProps, createContext } from "react";
 import { useContextOrThrow, useMergedClassName } from "@/hooks";
 
-const FormFieldNameContext = createContext<null | string>(null);
+type FormFieldContextType = null | {
+  fieldName: string;
+  isRequired: boolean;
+};
 
-export function useFormFieldName() {
-  return useContextOrThrow(FormFieldNameContext);
+const FormFieldContext = createContext<FormFieldContextType>(null);
+
+FormFieldContext.displayName = "FormFieldContext";
+
+export function useFormField() {
+  return useContextOrThrow(FormFieldContext);
 }
 
 type FormFieldProps = {
   name: string;
+  isRequired?: boolean;
 } & ComponentProps<"fieldset">;
 
 export function FormField(props: FormFieldProps) {
-  const { children, name, className, ...rest } = props;
+  const { children, name, isRequired, className, ...rest } = props;
 
   const classNameMarged = useMergedClassName("flex flex-col gap-2", className);
 
   return (
-    <FormFieldNameContext.Provider value={name}>
+    <FormFieldContext.Provider
+      value={{ fieldName: name, isRequired: Boolean(isRequired) }}
+    >
       <fieldset className={classNameMarged} {...rest}>
         {children}
       </fieldset>
-    </FormFieldNameContext.Provider>
+    </FormFieldContext.Provider>
   );
 }

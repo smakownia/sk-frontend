@@ -28,42 +28,44 @@ export function CreateProductForm() {
     >
       <h1 className="text-4xl font-medium">Stwórz Produkt</h1>
 
-      <Form.Field name="categoryId">
-        <Form.Label>Kategoria</Form.Label>
-        <Form.Input>
-          {(props) => (
-            <Select {...props}>
-              <option value="" disabled>
-                Wybierz Kategorie
-              </option>
-              {categories?.map(({ id, name }) => (
-                <option key={id} value={id}>
-                  {name}
+      <Form.Fields>
+        <Form.Field name="categoryId" isRequired>
+          <Form.Label>Kategoria</Form.Label>
+          <Form.Input>
+            {(props) => (
+              <Select {...props}>
+                <option value="" disabled>
+                  Wybierz Kategorie
                 </option>
-              ))}
-            </Select>
-          )}
-        </Form.Input>
-        <Form.ErrorMessage />
-      </Form.Field>
+                {categories?.map(({ id, name }) => (
+                  <option key={id} value={id}>
+                    {name}
+                  </option>
+                ))}
+              </Select>
+            )}
+          </Form.Input>
+          <Form.ErrorMessage />
+        </Form.Field>
 
-      <Form.Field name="name">
-        <Form.Label>Nazwa</Form.Label>
-        <Form.Input placeholder="Nazwa produktu" />
-        <Form.ErrorMessage />
-      </Form.Field>
+        <Form.Field name="name" isRequired>
+          <Form.Label>Nazwa</Form.Label>
+          <Form.Input placeholder="Nazwa produktu" />
+          <Form.ErrorMessage />
+        </Form.Field>
 
-      <Form.Field name="description">
-        <Form.Label>Opis</Form.Label>
-        <Form.Input placeholder="Opis produktu" />
-        <Form.ErrorMessage />
-      </Form.Field>
+        <Form.Field name="description">
+          <Form.Label>Opis</Form.Label>
+          <Form.Input placeholder="Opis produktu" />
+          <Form.ErrorMessage />
+        </Form.Field>
 
-      <Form.Field name="price">
-        <Form.Label>Cena</Form.Label>
-        <Form.Input type="number" step="0.01" placeholder="Cena produktu" />
-        <Form.ErrorMessage />
-      </Form.Field>
+        <Form.Field name="price" isRequired>
+          <Form.Label>Cena</Form.Label>
+          <Form.Input type="number" step="0.01" placeholder="Cena produktu" />
+          <Form.ErrorMessage />
+        </Form.Field>
+      </Form.Fields>
 
       <Form.Submit>Stwórz Produkt</Form.Submit>
     </Form>
