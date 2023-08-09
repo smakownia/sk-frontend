@@ -1,7 +1,11 @@
-html {
-  @apply overflow-x-hidden !overflow-y-scroll !p-0;
-}
+@tailwind base;
 
-a {
-  @apply block;
+@layer base {
+  html {
+    @apply overflow-x-hidden !overflow-y-scroll !p-0;
+  }
+
+  a {
+    @apply block;
+  }
 }

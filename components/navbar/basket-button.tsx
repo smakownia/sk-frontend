@@ -1,7 +1,23 @@
 import { useMemo } from "react";
-import { BasketIcon, Button } from "@/components";
+import { BasketIcon } from "@/components";
 import { useBasket, useBasketDrawer } from "@/features/basket";
 import { NavButton } from "./nav-button";
+
+export function ButtonBadge({ children, ...rest }) {
+  return (
+    <div
+      className="absolute -top-1 -right-1 p-1 rounded-full bg-primary-500"
+      {...rest}
+    >
+      <span
+        className={`flex justify-center items-center min-w-[8px] h-[8px] 
+                    text-xs text-white`}
+      >
+        {children}
+      </span>
+    </div>
+  );
+}
 
 export function BasketButton() {
   const { data: basket } = useBasket();
@@ -11,7 +27,7 @@ export function BasketButton() {
 
   return (
     <NavButton onClick={basketDrawer.open}>
-      {anyItems && <Button.Badge>{basket!.totalItems}</Button.Badge>}
+      {anyItems && <ButtonBadge>{basket!.totalItems}</ButtonBadge>}
       <BasketIcon />
     </NavButton>
   );

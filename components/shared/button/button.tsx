@@ -1,16 +1,20 @@
 import { ComponentProps, forwardRef } from "react";
 import { useMergedClassName } from "@/hooks";
-import { colorSchemeVariants } from "./variants";
 
 type ButtonProps = ComponentProps<"button"> & {
   colorScheme?: keyof typeof colorSchemeVariants;
 };
 
+export const colorSchemeVariants = {
+  white: "btn-white",
+  primary: "btn-primary",
+  primaryLight: "btn-primary-light",
+};
+
 export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
   ({ children, className, colorScheme = "primary", ...rest }, ref) => {
     const classNameMerged = useMergedClassName(
-      `relative flex justify-center items-center w-fit h-fit py-2 px-4 rounded
-      font-medium transition-colors disabled:pointer-events-none`,
+      "btn",
       colorSchemeVariants[colorScheme],
       className,
     );

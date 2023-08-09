@@ -12,8 +12,10 @@ export function CreateProductForm() {
   const { trigger: createProduct } = useCreateProductMutation();
 
   const submitHandler = useCallback(
-    (values: CreateProductFormValues) => {
-      createProduct(values).then(() => router.push("/admin/produkty"));
+    async (values: CreateProductFormValues) => {
+      await createProduct({ ...values, price: values.price * 100 });
+
+      router.push("/admin/produkty");
     },
     [createProduct, router],
   );
@@ -29,8 +31,11 @@ export function CreateProductForm() {
       <Form.Field name="categoryId">
         <Form.Label>Kategoria</Form.Label>
         <Form.Input>
-          {(register) => (
-            <Select {...register}>
+          {(props) => (
+            <Select {...props}>
+              <option value="" disabled>
+                Wybierz Kategorie
+              </option>
               {categories?.map(({ id, name }) => (
                 <option key={id} value={id}>
                   {name}
@@ -44,19 +49,19 @@ export function CreateProductForm() {
 
       <Form.Field name="name">
         <Form.Label>Nazwa</Form.Label>
-        <Form.Input />
+        <Form.Input placeholder="Nazwa produktu" />
         <Form.ErrorMessage />
       </Form.Field>
 
       <Form.Field name="description">
         <Form.Label>Opis</Form.Label>
-        <Form.Input />
+        <Form.Input placeholder="Opis produktu" />
         <Form.ErrorMessage />
       </Form.Field>
 
       <Form.Field name="price">
         <Form.Label>Cena</Form.Label>
-        <Form.Input type="number" step="0.01" />
+        <Form.Input type="number" step="0.01" placeholder="Cena produktu" />
         <Form.ErrorMessage />
       </Form.Field>
 

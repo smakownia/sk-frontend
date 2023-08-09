@@ -1,5 +1,5 @@
 import { ComponentProps, ReactNode } from "react";
-import { UseFormRegisterReturn, useFormContext } from "react-hook-form";
+import { ControllerRenderProps, useController } from "react-hook-form";
 import { Input } from "@/components";
 import { useFormFieldName } from "./form-field";
 
@@ -7,24 +7,26 @@ type FormInputProps =
   | ComponentProps<typeof Input>
   | {
       children: (
-        register: { id: string } & UseFormRegisterReturn<any>,
+        props: {
+          id: string;
+          isInvalid: boolean;
+        } & ControllerRenderProps,
       ) => ReactNode;
     };
 
 export function FormInput({ children, ...rest }: FormInputProps) {
   const fieldName = useFormFieldName();
-  const { register, formState } = useFormContext();
+  const { field, fieldState } = useController({ name: fieldName });
 
   if (typeof children === "function") {
-    return children({ id: fieldName, ...register(fieldName) });
+    return children({
+      id: fieldName,
+      isInvalid: fieldState.invalid,
+      ...field,
+    });
   }
 
   return (
-    <Input
-      id={fieldName}
-      {...register(fieldName)}
-      isInvalid={Boolean(formState.errors[fieldName])}
-      {...rest}
-    />
+    <Input id={fieldName} isInvalid={fieldState.invalid} {...field} {...rest} />
   );
 }

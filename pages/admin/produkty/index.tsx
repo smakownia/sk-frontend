@@ -6,7 +6,9 @@ const AdminProductsPage: NextPage = () => {
     <div>
       <Link href="/admin">Admin</Link>
       <h1 className="text-4xl font-medium">Produkty</h1>
-      <Link href="/admin/produkty/stworz">Stwórz produkt</Link>
+      <Link className="btn btn-primary" href="/admin/produkty/stworz">
+        Stwórz produkt
+      </Link>
     </div>
   );
 };
