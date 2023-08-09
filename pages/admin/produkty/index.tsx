@@ -1,5 +1,6 @@
 import { NextPage } from "next";
 import Link from "next/link";
+import { AdminProductsList } from "@/features/products";
 
 const AdminProductsPage: NextPage = () => {
   return (
@@ -9,6 +10,7 @@ const AdminProductsPage: NextPage = () => {
       <Link className="btn btn-primary" href="/admin/produkty/stworz">
         Stwórz produkt
       </Link>
+      <AdminProductsList />
     </div>
   );
 };

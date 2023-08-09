@@ -1,33 +1,36 @@
 import { GetServerSideProps, NextPage } from "next";
 import Head from "next/head";
-import { SWRConfig, SWRConfiguration } from "swr";
+import { QueryClient, dehydrate } from "react-query";
 import {
   CategoriesList,
-  getCategoriesWithProductsFallback,
+  getCategories,
+  getProducts,
 } from "@/features/products";
 
-type MenuPageProps = {
-  fallback: SWRConfiguration["fallback"];
-};
-
-const MenuPage: NextPage<MenuPageProps> = ({ fallback }) => {
+const MenuPage: NextPage = () => {
   return (
-    <SWRConfig value={{ fallback }}>
+    <div className="pt-16 pb-8">
       <Head>
         <title>Menu - Smakownia</title>
       </Head>
 
-      <div className="pt-16 pb-8">
-        <CategoriesList />
-      </div>
-    </SWRConfig>
+      <CategoriesList />
+    </div>
   );
 };
 
 export const getServerSideProps: GetServerSideProps = async () => {
+  const queryClient = new QueryClient();
+
+  const categories = await getCategories();
+  const products = await getProducts();
+
+  queryClient.setQueryData("categories", categories);
+  queryClient.setQueryData("products", products);
+
   return {
     props: {
-      fallback: await getCategoriesWithProductsFallback(),
+      dehydratedState: dehydrate(queryClient),
     },
   };
 };

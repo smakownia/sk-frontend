@@ -1,4 +1,3 @@
-import { unstable_serialize } from "swr";
 import { apiClient } from "@/lib/clients";
 import { Category, CreateProductCommand, Product } from "@/features/products";
 
@@ -8,10 +7,8 @@ export async function getCategories() {
   return data;
 }
 
-export async function getProducts(categoryId?: string) {
-  const { data } = await apiClient<Product[]>("api/v1/products", {
-    params: { categoryId },
-  });
+export async function getProducts() {
+  const { data } = await apiClient<Product[]>("api/v1/products");
 
   return data;
 }
@@ -22,19 +19,8 @@ export async function createProduct(command: CreateProductCommand) {
   return data;
 }
 
-export async function getCategoriesWithProductsFallback() {
-  const categories = await getCategories();
+export async function deleteProduct(id: string) {
+  const { data } = await apiClient.delete<void>(`api/v1/products/${id}`);
 
-  const productsFallback = await Promise.all(
-    categories.map(async (category) => ({
-      [unstable_serialize(["/api/v1/products", category.id])]:
-        await getProducts(category.id),
-    })),
-  );
-
-  const mergedProductsFallback = productsFallback.reduce((total, curr) => {
-    return { ...total, ...curr };
-  }, {});
-
-  return { "/api/v1/categories": categories, ...mergedProductsFallback };
+  return data;
 }

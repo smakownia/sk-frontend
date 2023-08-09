@@ -9,7 +9,7 @@ import { CreateProductFormValues } from "./types";
 export function CreateProductForm() {
   const router = useRouter();
   const { data: categories } = useCategories();
-  const { trigger: createProduct } = useCreateProductMutation();
+  const { mutateAsync: createProduct } = useCreateProductMutation();
 
   const submitHandler = useCallback(
     async (values: CreateProductFormValues) => {

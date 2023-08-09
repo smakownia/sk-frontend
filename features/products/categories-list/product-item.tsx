@@ -4,7 +4,7 @@ import { useAddBasketItemMutation } from "@/features/basket";
 import { Product } from "@/features/products";
 
 export function ProductItem({ id, name, description, price }: Product) {
-  const { trigger: addToBasket } = useAddBasketItemMutation();
+  const { mutate: addToBasket } = useAddBasketItemMutation();
 
   return (
     <li className="flex flex-col">

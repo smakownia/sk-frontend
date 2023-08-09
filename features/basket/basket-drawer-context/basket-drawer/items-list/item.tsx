@@ -8,8 +8,8 @@ import {
 
 export function Item(props: BasketItem) {
   const { id, name, description, quantity, totalPrice } = props;
-  const { trigger: updateBasketItem } = useUpdateBasketItemMutation();
-  const { trigger: removeBasketItem } = useRemoveBasketItemMutation();
+  const { mutate: updateBasketItem } = useUpdateBasketItemMutation();
+  const { mutate: removeBasketItem } = useRemoveBasketItemMutation();
 
   return (
     <li className="flex py-4">
