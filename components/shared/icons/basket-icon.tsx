@@ -4,9 +4,9 @@ export const BasketIcon = forwardRef<SVGSVGElement, ComponentProps<"svg">>(
   (props, ref) => {
     return (
       <svg
+        ref={ref}
         viewBox="0 0 20 20"
         fill="none"
-        ref={ref}
         className="w-5 h-5"
         {...props}
       >

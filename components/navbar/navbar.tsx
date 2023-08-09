@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { Menu } from "@headlessui/react";
-import { Logo } from "@/components";
+import { Logo, UserIcon } from "@/components";
 import { BasketButton } from "./basket-button";
 import { NavMenuDesktop, NavMenuMobile, NavMenuMobileButton } from "./nav-menu";
 
@@ -24,6 +24,11 @@ export function Navbar() {
           <ul className="flex gap-4 ml-auto">
             <li>
               <BasketButton />
+            </li>
+            <li>
+              <Link className="btn btn-primary-light px-2" href="/admin">
+                <UserIcon />
+              </Link>
             </li>
             <li className="md:hidden">
               <NavMenuMobileButton />

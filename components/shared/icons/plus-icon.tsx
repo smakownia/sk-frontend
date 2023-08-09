@@ -4,9 +4,9 @@ export const PlusIcon = forwardRef<SVGSVGElement, ComponentProps<"svg">>(
   (props, ref) => {
     return (
       <svg
+        ref={ref}
         viewBox="0 0 12 13"
         fill="none"
-        ref={ref}
         className="w-5 h-5"
         {...props}
       >

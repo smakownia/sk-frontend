@@ -4,11 +4,11 @@ export const Logo = forwardRef<SVGSVGElement, ComponentProps<"svg">>(
   (props, ref) => {
     return (
       <svg
+        ref={ref}
         width="78"
         height="32"
         viewBox="0 0 78 32"
         fill="none"
-        ref={ref}
         {...props}
       >
         <path

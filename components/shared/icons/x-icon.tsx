@@ -4,9 +4,9 @@ export const XIcon = forwardRef<SVGSVGElement, ComponentProps<"svg">>(
   (props, ref) => {
     return (
       <svg
+        ref={ref}
         viewBox="0 0 14 14"
         fill="none"
-        ref={ref}
         className="w-5 h-5"
         {...props}
       >

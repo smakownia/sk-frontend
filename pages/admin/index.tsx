@@ -4,11 +4,12 @@ import Link from "next/link";
 
 const AdminPage: NextPage = () => {
   return (
-    <div className="flex items-center justify-center min-h-screen">
+    <div className="container pt-24 pb-8">
       <Head>
         <title>Admin - Smakownia</title>
       </Head>
 
+      <h1 className="mb-4 text-4xl font-medium">Admin</h1>
       <Link className="btn btn-primary" href="/admin/produkty">
         Produkty
       </Link>

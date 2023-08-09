@@ -4,11 +4,11 @@ export const Bars3Icon = forwardRef<SVGSVGElement, ComponentProps<"svg">>(
   (props, ref) => {
     return (
       <svg
+        ref={ref}
         fill="none"
         viewBox="3.25 6.25 17.5 11.5"
         strokeWidth="1.5"
         stroke="currentColor"
-        ref={ref}
         className="w-5 h-5"
         {...props}
       >
