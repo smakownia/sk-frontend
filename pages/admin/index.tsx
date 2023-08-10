@@ -4,7 +4,7 @@ import Link from "next/link";
 
 const AdminPage: NextPage = () => {
   return (
-    <div className="container pt-24 pb-8">
+    <div className="container mt-10 py-16">
       <Head>
         <title>Admin - Smakownia</title>
       </Head>

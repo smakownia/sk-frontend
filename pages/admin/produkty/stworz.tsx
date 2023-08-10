@@ -4,7 +4,7 @@ import { CreateProductForm } from "@/features/products";
 
 const CreateProductPage: NextPage = () => {
   return (
-    <div className="container pt-24 pb-8">
+    <div className="container mt-10 py-16">
       <Head>
         <title>Stworz produkt - Smakownia</title>
       </Head>

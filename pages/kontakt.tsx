@@ -3,7 +3,7 @@ import Head from "next/head";
 
 const ContactPage: NextPage = () => {
   return (
-    <div className="pt-10">
+    <div className="mt-10 py-16">
       <Head>
         <title>Kontakt - Smakownia</title>
       </Head>

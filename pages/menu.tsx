@@ -9,7 +9,7 @@ import {
 
 const MenuPage: NextPage = () => {
   return (
-    <div className="container pt-16">
+    <div className="container mt-10 py-16">
       <Head>
         <title>Menu - Smakownia</title>
       </Head>
