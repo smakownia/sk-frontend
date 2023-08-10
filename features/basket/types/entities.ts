@@ -9,6 +9,7 @@ export type Basket = {
 
 export type BasketItem = {
   id: string;
+  imageUrl: string;
   name: string;
   description?: string;
   price: Price;

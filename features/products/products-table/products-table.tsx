@@ -9,9 +9,9 @@ export function ProductsTable() {
     <Table>
       <Table.Head>
         <tr>
+          <Table.H>Kategoria</Table.H>
           <Table.H>Zdjęcie</Table.H>
           <Table.H>Nazwa</Table.H>
-          <Table.H>Kategoria</Table.H>
           <Table.H>Opis</Table.H>
           <Table.H>Cena</Table.H>
           <Table.H>Akcje</Table.H>

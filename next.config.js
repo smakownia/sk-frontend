@@ -5,6 +5,9 @@ const nextConfig = {
 
     return config;
   },
+  images: {
+    domains: [process.env.NEXT_PUBLIC_STATIC_FILES_DOMAIN]
+  }
 };
 
 module.exports = nextConfig;

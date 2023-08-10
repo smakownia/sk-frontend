@@ -3,7 +3,8 @@ import { Button } from "@/components";
 import { useAddBasketItemMutation } from "@/features/basket";
 import { Product } from "@/features/products";
 
-export function ProductItem({ id, name, description, price }: Product) {
+export function ProductItem(props: Product) {
+  const { id, imageUrl, name, description, price } = props;
   const { mutate: addToBasket } = useAddBasketItemMutation();
 
   return (
@@ -11,7 +12,7 @@ export function ProductItem({ id, name, description, price }: Product) {
       <div className="relative aspect-square mb-4">
         <Image
           alt={name}
-          src={`/${name}.png`}
+          src={imageUrl}
           sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 256px"
           fill
           priority

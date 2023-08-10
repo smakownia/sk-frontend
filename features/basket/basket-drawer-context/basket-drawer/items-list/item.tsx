@@ -7,7 +7,7 @@ import {
 } from "@/features/basket";
 
 export function Item(props: BasketItem) {
-  const { id, name, description, quantity, totalPrice } = props;
+  const { id, imageUrl, name, description, quantity, totalPrice } = props;
   const { mutate: updateBasketItem } = useUpdateBasketItemMutation();
   const { mutate: removeBasketItem } = useRemoveBasketItemMutation();
 
@@ -15,7 +15,7 @@ export function Item(props: BasketItem) {
     <li className="flex py-4">
       <Image
         alt={name}
-        src={`/${name}.png`}
+        src={imageUrl}
         width="64"
         height="64"
         className="self-start"

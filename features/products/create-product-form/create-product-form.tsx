@@ -1,6 +1,6 @@
 import { useCallback } from "react";
 import { useRouter } from "next/router";
-import { Form, Select } from "@/components";
+import { FileInput, Form, Select } from "@/components";
 import { useCategories, useCreateProductMutation } from "@/features/products";
 import { defaultValues } from "./default-values";
 import { validationSchema } from "./validation-schema";
@@ -13,7 +13,11 @@ export function CreateProductForm() {
 
   const submitHandler = useCallback(
     async (values: CreateProductFormValues) => {
-      await createProduct({ ...values, price: Math.ceil(values.price * 100) });
+      await createProduct({
+        ...values,
+        image: values.image!,
+        price: Math.ceil(values.price * 100),
+      });
 
       router.push("/admin/produkty");
     },
@@ -43,6 +47,20 @@ export function CreateProductForm() {
                   </option>
                 ))}
               </Select>
+            )}
+          </Form.Input>
+          <Form.ErrorMessage />
+        </Form.Field>
+
+        <Form.Field name="image" isRequired>
+          <Form.Label>Zdjęcie</Form.Label>
+          <Form.Input>
+            {(props) => (
+              <FileInput
+                onChange={(e) => {
+                  props.onChange(e.target.files![0]);
+                }}
+              />
             )}
           </Form.Input>
           <Form.ErrorMessage />

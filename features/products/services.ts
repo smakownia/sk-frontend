@@ -17,7 +17,9 @@ export async function getProducts() {
 }
 
 export async function createProduct(command: CreateProductCommand) {
-  const { data } = await apiClient.post<Product>("api/v1/products", command);
+  const { data } = await apiClient.post<Product>("api/v1/products", command, {
+    headers: { "Content-Type": "multipart/form-data" },
+  });
   return data;
 }
 
