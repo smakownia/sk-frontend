@@ -10,8 +10,13 @@ const AdminPage: NextPage = () => {
       </Head>
 
       <h1 className="mb-4 text-4xl font-medium">Admin</h1>
-      <Link className="btn btn-primary" href="/admin/produkty">
+
+      <Link className="mb-4 btn btn-primary" href="/admin/produkty">
         Produkty
+      </Link>
+
+      <Link className="btn btn-primary" href="/admin/kategorie">
+        Kategorie
       </Link>
     </div>
   );

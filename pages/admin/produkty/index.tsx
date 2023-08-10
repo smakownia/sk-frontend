@@ -11,9 +11,11 @@ const AdminProductsPage: NextPage = () => {
       </Head>
 
       <h1 className="mb-8 text-4xl font-medium">Produkty</h1>
+
       <Link className="btn btn-primary mb-8" href="/admin/produkty/stworz">
         Stwórz produkt
       </Link>
+      
       <ProductsTable />
     </div>
   );

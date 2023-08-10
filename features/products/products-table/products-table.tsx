@@ -14,7 +14,7 @@ export function ProductsTable() {
           <Table.H>Kategoria</Table.H>
           <Table.H>Opis</Table.H>
           <Table.H>Cena</Table.H>
-          <Table.H />
+          <Table.H>Akcje</Table.H>
         </tr>
       </Table.Head>
 

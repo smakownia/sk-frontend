@@ -24,3 +24,9 @@ export async function deleteProduct(id: string) {
 
   return data;
 }
+
+export async function deleteCategory(id: string) {
+  const { data } = await apiClient.delete<void>(`api/v1/categories/${id}`);
+
+  return data;
+}
