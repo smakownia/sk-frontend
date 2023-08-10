@@ -9,7 +9,13 @@ export function ProductItem({ id, name, description, price }: Product) {
   return (
     <li className="flex flex-col">
       <div className="relative aspect-square mb-4">
-        <Image alt={name} src={`/${name}.png`} fill priority />
+        <Image
+          alt={name}
+          src={`/${name}.png`}
+          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 256px"
+          fill
+          priority
+        />
       </div>
 
       <h2 className="mb-2 text-2xl font-medium">{name}</h2>
