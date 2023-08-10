@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { AppProps } from "next/app";
 import { Hydrate, QueryClient, QueryClientProvider } from "react-query";
-import { Navbar } from "@/components";
+import { Footer, Navbar } from "@/components";
 import { BasketDrawerProvider } from "@/features/basket";
 import "@/styles/globals.css";
 
@@ -14,6 +14,7 @@ function MyApp({ Component, pageProps }: AppProps) {
         <BasketDrawerProvider>
           <Navbar />
           <Component {...pageProps} />
+          <Footer />
         </BasketDrawerProvider>
       </Hydrate>
     </QueryClientProvider>

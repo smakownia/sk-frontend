@@ -10,7 +10,7 @@ export function CategoriesList() {
   }
 
   return (
-    <main className="flex flex-col gap-16 py-8">
+    <main className="flex flex-col gap-16 py-16">
       {categories.map(({ id, name }) => (
         <section key={id}>
           <h2 className="mb-8 text-4xl font-medium">{name}</h2>
