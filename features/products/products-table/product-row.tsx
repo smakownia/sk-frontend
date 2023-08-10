@@ -21,7 +21,7 @@ export function ProductRow(product: Product) {
       <Table.D>{name}</Table.D>
       <Table.D>{categoryName}</Table.D>
       <Table.D>{description}</Table.D>
-      <Table.D>{price / 100}zł</Table.D>
+      <Table.D>{price.formatted}</Table.D>
       <Table.D>
         <ProductDeleteButton id={id} />
       </Table.D>

@@ -27,6 +27,12 @@ export function FormInput({ children, ...rest }: FormInputProps) {
   }
 
   return (
-    <Input id={fieldName} isInvalid={fieldState.invalid} {...field} {...rest} />
+    <Input
+      id={fieldName}
+      className="w-full"
+      isInvalid={fieldState.invalid}
+      {...field}
+      {...rest}
+    />
   );
 }

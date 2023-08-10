@@ -13,7 +13,7 @@ export function CreateProductForm() {
 
   const submitHandler = useCallback(
     async (values: CreateProductFormValues) => {
-      await createProduct({ ...values, price: values.price * 100 });
+      await createProduct({ ...values, price: Math.ceil(values.price * 100) });
 
       router.push("/admin/produkty");
     },

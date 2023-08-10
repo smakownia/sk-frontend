@@ -17,7 +17,7 @@ export function ProductItem({ id, name, description, price }: Product) {
       {description && <p className="mb-2 text-neutral-600">{description}</p>}
 
       <div className="flex justify-between items-center mt-auto">
-        <span className="text-xl font-medium">{price / 100}zł</span>
+        <span className="text-xl font-medium">{price.formatted}</span>
         <Button onClick={() => addToBasket({ id, quantity: 1 })}>
           Do koszyka
         </Button>
