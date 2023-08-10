@@ -1,0 +1,13 @@
+@tailwind utilities;
+
+@layer utilities {
+  .thin-scrollbar::-webkit-scrollbar {
+    @apply w-1;
+  }
+  .thin-scrollbar::-webkit-scrollbar-track {
+    @apply bg-neutral-50;
+  }
+  .thin-scrollbar::-webkit-scrollbar-thumb {
+    @apply bg-neutral-200 rounded;
+  }
+}
