@@ -4,3 +4,7 @@ export type CreateProductCommand = {
   description?: string | null;
   price: number;
 };
+
+export type CreateCategoryCommand = {
+  name: string;
+};

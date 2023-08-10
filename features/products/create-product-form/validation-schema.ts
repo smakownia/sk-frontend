@@ -6,10 +6,7 @@ export const validationSchema = yup
       .string()
       .required("Kategoria jest wymagana")
       .uuid("Niepoprawny format kategori"),
-    name: yup
-      .string()
-      .required("Nazwa jest wymagana")
-      .min(1, "Nazwa musi zawierać co najmniej 1 znak"),
+    name: yup.string().required("Nazwa jest wymagana"),
     description: yup.string(),
     price: yup
       .number()
