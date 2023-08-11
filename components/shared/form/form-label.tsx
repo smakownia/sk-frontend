@@ -6,11 +6,11 @@ type FormLabelProps = ComponentProps<typeof Label>;
 
 export const FormLabel = forwardRef<HTMLLabelElement, FormLabelProps>(
   ({ children, ...rest }, ref) => {
-    const { fieldName, isRequired } = useFormField();
+    const { field, isRequired } = useFormField();
 
     return (
-      <Label ref={ref} htmlFor={fieldName} {...rest} isRequired={isRequired}>
-        {children ? children : fieldName}
+      <Label ref={ref} htmlFor={field.name} {...rest} isRequired={isRequired}>
+        {children ? children : field.name}
       </Label>
     );
   },
