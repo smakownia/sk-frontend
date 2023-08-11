@@ -1,4 +1,4 @@
-import { apiClient } from "@/lib/clients";
+import { apiPublicClient } from "@/lib/clients";
 import {
   AddBasketItemCommand,
   Basket,
@@ -6,7 +6,7 @@ import {
 } from "@/features/basket/types";
 
 export async function getBasket() {
-  const { data } = await apiClient.get<Basket>("api/v1/basket", {
+  const { data } = await apiPublicClient.get<Basket>("api/v1/basket", {
     withCredentials: true,
   });
 
@@ -14,7 +14,7 @@ export async function getBasket() {
 }
 
 export async function addBasketItem(item: AddBasketItemCommand) {
-  const { data } = await apiClient.post<Basket>("api/v1/basket/items", item, {
+  const { data } = await apiPublicClient.post<Basket>("api/v1/basket/items", item, {
     withCredentials: true,
   });
 
@@ -22,7 +22,7 @@ export async function addBasketItem(item: AddBasketItemCommand) {
 }
 
 export async function updateBasketItem(item: UpdateBasketItemCommand) {
-  const { data } = await apiClient.put<Basket>(
+  const { data } = await apiPublicClient.put<Basket>(
     `api/v1/basket/items/${item.id}`,
     item,
     {
@@ -34,7 +34,7 @@ export async function updateBasketItem(item: UpdateBasketItemCommand) {
 }
 
 export async function removeBasketItem(id: string) {
-  const { data } = await apiClient.delete<Basket>(`api/v1/basket/items/${id}`, {
+  const { data } = await apiPublicClient.delete<Basket>(`api/v1/basket/items/${id}`, {
     withCredentials: true,
   });
 
