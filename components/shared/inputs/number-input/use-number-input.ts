@@ -23,7 +23,7 @@ export function useNumberInput(props: NumberInputProps) {
         onChange(max);
       }
     },
-    [onChange, max, min],
+    [onChange, max, min, currentValue],
   );
 
   const incrementValue = useCallback(
