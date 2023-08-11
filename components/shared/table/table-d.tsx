@@ -1,5 +1,11 @@
-import { ReactNode } from "react";
+import { ComponentProps, forwardRef } from "react";
 
-export function TableD({ children }: { children?: ReactNode }) {
-  return <td className="px-6 py-3">{children}</td>;
-}
+type TableDProps = ComponentProps<"td">;
+
+export const TableD = forwardRef<HTMLTableCellElement, TableDProps>(
+  (props, ref) => {
+    return <td ref={ref} className="px-6 py-3" {...props} />;
+  },
+);
+
+TableD.displayName = "Table.D";

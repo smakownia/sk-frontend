@@ -14,7 +14,7 @@ export function Navbar() {
   return (
     <nav className="z-10 fixed top-0 left-0 flex items-center h-16 w-full border-b border-neutral-50 bg-white">
       <div className="container flex items-center h-full">
-        <Link href="/">
+        <Link href="/" aria-label="Strona główna">
           <Logo />
         </Link>
 
@@ -26,7 +26,11 @@ export function Navbar() {
               <BasketButton />
             </li>
             <li>
-              <Link className="btn btn-primary-light px-2" href="/admin">
+              <Link
+                className="btn btn-primary-light px-2"
+                href="/admin"
+                aria-label="Panel admina"
+              >
                 <UserIcon />
               </Link>
             </li>

@@ -5,6 +5,7 @@ export const Bars3Icon = forwardRef<SVGSVGElement, ComponentProps<"svg">>(
     return (
       <svg
         ref={ref}
+        aria-hidden="true"
         fill="none"
         viewBox="3.25 6.25 17.5 11.5"
         strokeWidth="1.5"

@@ -1,10 +1,10 @@
-import { ComponentProps, createContext } from "react";
-import { useContextOrThrow, useMergedClassName } from "@/hooks";
+import { ComponentProps, createContext, forwardRef } from "react";
+import { UseControllerReturn, useController } from "react-hook-form";
+import { useContextOrThrow } from "@/hooks";
 
-type FormFieldContextType = null | {
-  fieldName: string;
-  isRequired: boolean;
-};
+type FormFieldContextType =
+  | null
+  | (UseControllerReturn & { isRequired: boolean });
 
 const FormFieldContext = createContext<FormFieldContextType>(null);
 
@@ -19,18 +19,20 @@ type FormFieldProps = {
   isRequired?: boolean;
 } & ComponentProps<"fieldset">;
 
-export function FormField(props: FormFieldProps) {
-  const { children, name, isRequired, className, ...rest } = props;
+export const FormField = forwardRef<HTMLFieldSetElement, FormFieldProps>(
+  ({ children, name, isRequired, ...rest }, ref) => {
+    const controller = useController({ name });
 
-  const classNameMarged = useMergedClassName("flex flex-col gap-2", className);
-
-  return (
-    <FormFieldContext.Provider
-      value={{ fieldName: name, isRequired: Boolean(isRequired) }}
-    >
-      <fieldset className={classNameMarged} {...rest}>
-        {children}
+    return (
+      <fieldset ref={ref} className="flex flex-col gap-2" {...rest}>
+        <FormFieldContext.Provider
+          value={{ ...controller, isRequired: Boolean(isRequired) }}
+        >
+          {children}
+        </FormFieldContext.Provider>
       </fieldset>
-    </FormFieldContext.Provider>
-  );
-}
+    );
+  },
+);
+
+FormField.displayName = "Form.Field";

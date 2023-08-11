@@ -1,5 +1,5 @@
 import { ComponentProps, ReactNode } from "react";
-import { ControllerRenderProps, useController } from "react-hook-form";
+import { ControllerRenderProps } from "react-hook-form";
 import { Input } from "@/components";
 import { useFormField } from "./form-field";
 
@@ -15,12 +15,11 @@ type FormInputProps =
     };
 
 export function FormInput({ children, ...rest }: FormInputProps) {
-  const { fieldName } = useFormField();
-  const { field, fieldState } = useController({ name: fieldName });
+  const { field, fieldState } = useFormField();
 
   if (typeof children === "function") {
     return children({
-      id: fieldName,
+      id: field.name,
       isInvalid: fieldState.invalid,
       ...field,
     });
@@ -28,7 +27,7 @@ export function FormInput({ children, ...rest }: FormInputProps) {
 
   return (
     <Input
-      id={fieldName}
+      id={field.name}
       className="w-full"
       isInvalid={fieldState.invalid}
       {...field}

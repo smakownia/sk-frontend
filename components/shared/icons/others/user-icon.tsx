@@ -5,6 +5,7 @@ export const UserIcon = forwardRef<SVGSVGElement, ComponentProps<"svg">>(
     return (
       <svg
         ref={ref}
+        aria-hidden="true"
         fill="none"
         strokeWidth="1.5"
         stroke="currentColor"

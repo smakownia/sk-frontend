@@ -1,5 +1,13 @@
-import { ReactNode } from "react";
+import { ComponentProps, forwardRef } from "react";
 
-export function TableBody({ children }: { children?: ReactNode }) {
-  return <tbody className="divide-y divide-neutral-50">{children}</tbody>;
-}
+type TableBodyProps = ComponentProps<"tbody">;
+
+export const TableBody = forwardRef<HTMLTableSectionElement, TableBodyProps>(
+  (props, ref) => {
+    return (
+      <tbody ref={ref} className="divide-y divide-neutral-50" {...props} />
+    );
+  },
+);
+
+TableBody.displayName = "Table.Body";

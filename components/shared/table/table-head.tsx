@@ -1,9 +1,17 @@
-import { ReactNode } from "react";
+import { ComponentProps, forwardRef } from "react";
 
-export function TableHead({ children }: { children?: ReactNode }) {
-  return (
-    <thead className="text-left border-b border-neutral-50 bg-neutral-10">
-      {children}
-    </thead>
-  );
-}
+type TableHeadProps = ComponentProps<"thead">;
+
+export const TableHead = forwardRef<HTMLTableSectionElement, TableHeadProps>(
+  (props, ref) => {
+    return (
+      <thead
+        ref={ref}
+        className="text-left border-b border-neutral-50 bg-neutral-10"
+        {...props}
+      />
+    );
+  },
+);
+
+TableHead.displayName = "Table.Head";
