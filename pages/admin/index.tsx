@@ -9,15 +9,20 @@ const AdminPage: NextPage = () => {
         <title>Admin - Smakownia</title>
       </Head>
 
-      <h1 className="mb-4 text-4xl font-medium">Admin</h1>
+      <h1 className="mb-8 text-4xl font-medium">Admin</h1>
 
-      <Link className="mb-4 btn btn-primary" href="/admin/produkty">
-        Produkty
-      </Link>
-
-      <Link className="btn btn-primary" href="/admin/kategorie">
-        Kategorie
-      </Link>
+      <ul className="flex gap-4">
+        <li>
+          <Link className="btn btn-primary" href="/admin/produkty">
+            Produkty
+          </Link>
+        </li>
+        <li>
+          <Link className="btn btn-primary" href="/admin/kategorie">
+            Kategorie
+          </Link>
+        </li>
+      </ul>
     </div>
   );
 };

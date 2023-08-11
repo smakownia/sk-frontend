@@ -5,6 +5,7 @@ export const FacebookIcon = forwardRef<SVGSVGElement, ComponentProps<"svg">>(
     return (
       <svg
         ref={ref}
+        aria-hidden="true"
         fill="currentColor"
         viewBox="2 2 20 19.88"
         className="w-5 h-5"

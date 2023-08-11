@@ -5,19 +5,17 @@ export function CategoriesList() {
   const { data: categories } = useCategories();
   const { data: products } = useProducts();
 
-  if (!categories || !products) {
-    return null;
-  }
-
   return (
     <main className="flex flex-col gap-16">
-      {categories.map(({ id, name }) => (
+      {categories?.map(({ id, name }) => (
         <section key={id}>
           <h2 className="mb-8 text-4xl font-medium">{name}</h2>
-          <ProductsList
-            key={id}
-            products={products.filter((product) => product.categoryId === id)}
-          />
+          {products && (
+            <ProductsList
+              key={id}
+              products={products.filter((product) => product.categoryId === id)}
+            />
+          )}
         </section>
       ))}
     </main>

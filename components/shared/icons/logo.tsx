@@ -5,6 +5,7 @@ export const Logo = forwardRef<SVGSVGElement, ComponentProps<"svg">>(
     return (
       <svg
         ref={ref}
+        aria-hidden="true"
         width="78"
         height="32"
         viewBox="0 0 78 32"

@@ -11,12 +11,24 @@ export function FooterContent() {
       </p>
       <ul className="flex gap-4">
         {[
-          { Icon: FacebookIcon, href: "/facebook" },
-          { Icon: GithubIcon, href: "/github" },
-          { Icon: InstagramIcon, href: "/instagram" },
-        ].map(({ Icon, href }) => (
+          {
+            Icon: FacebookIcon,
+            href: "https://www.facebook.com/react",
+            label: "Facebook",
+          },
+          {
+            Icon: GithubIcon,
+            href: "https://github.com/smakownia",
+            label: "Github",
+          },
+          {
+            Icon: InstagramIcon,
+            href: "https://www.instagram.com/reactjs/",
+            label: "Instagram",
+          },
+        ].map(({ Icon, href, label }) => (
           <li key={href}>
-            <Link href={href}>
+            <Link href={href} aria-label={label}>
               <Icon
                 className={`w-6 h-6 text-primary-500 transition-colors 
                           hover:text-primary-600`}

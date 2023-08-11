@@ -5,6 +5,7 @@ export const MinusIcon = forwardRef<SVGSVGElement, ComponentProps<"svg">>(
     return (
       <svg
         ref={ref}
+        aria-hidden="true"
         viewBox="0 0 13 3"
         fill="none"
         className="w-5 h-5"
