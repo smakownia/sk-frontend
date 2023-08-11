@@ -6,17 +6,14 @@ services:
     ports:
       - 3000:3000
     volumes:
-      - next-cache-images:/app/.next/cache/images
-      - /app/node_modules
-    environment:
-      - NEXT_PUBLIC_API_URL=http://localhost:8000
-      - API_URL=http://smakownia.gateway.api:80
-      - STATIC_FILES_DOMAIN=smakownia.gateway.api
+      - frontend-cache-images:/app/.next/cache/images
+      - frontend-node_modules:/app/node_modules
     networks:
       - smakownia
 
 volumes:
-  next-cache-images:
+  frontend-cache-images:
+  frontend-node_modules:
 
 networks:
   smakownia:

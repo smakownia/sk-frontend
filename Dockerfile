@@ -13,7 +13,6 @@ WORKDIR /app
 COPY --from=deps /app/node_modules ./node_modules
 COPY . .
 
-ENV STATIC_FILES_DOMAIN smakownia.gateway.api
 ENV NODE_ENV production
 
 RUN npm run build
