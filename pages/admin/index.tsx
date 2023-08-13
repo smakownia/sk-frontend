@@ -13,12 +13,12 @@ const AdminPage: NextPage = () => {
 
       <ul className="flex gap-4">
         <li>
-          <Link className="btn btn-primary" href="/admin/produkty">
+          <Link className="btn" href="/admin/produkty">
             Produkty
           </Link>
         </li>
         <li>
-          <Link className="btn btn-primary" href="/admin/kategorie">
+          <Link className="btn" href="/admin/kategorie">
             Kategorie
           </Link>
         </li>
