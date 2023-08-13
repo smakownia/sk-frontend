@@ -4,3 +4,4 @@ export * from "./plus-icon";
 export * from "./minus-icon";
 export * from "./bars-3-icon";
 export * from "./user-icon";
+export * from "./arrow-right-icon";

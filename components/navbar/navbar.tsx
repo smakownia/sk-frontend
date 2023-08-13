@@ -8,7 +8,6 @@ import { UserMenu } from "./user-menu";
 const menu = [
   { name: "Strona Główna", href: "/" },
   { name: "Menu", href: "/menu" },
-  { name: "Kontakt", href: "/kontakt" },
 ];
 
 export function Navbar() {

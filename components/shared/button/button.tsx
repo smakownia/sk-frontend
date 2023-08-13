@@ -3,6 +3,12 @@ import { useMergedClassName } from "@/hooks";
 
 type ButtonProps = ComponentProps<"button"> & {
   colorScheme?: keyof typeof colorSchemeVariants;
+  size?: keyof typeof sizeVariants;
+};
+
+export const sizeVariants = {
+  md: "btn-md",
+  lg: "btn-lg",
 };
 
 export const colorSchemeVariants = {
@@ -12,10 +18,11 @@ export const colorSchemeVariants = {
 };
 
 export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
-  ({ children, className, colorScheme = "primary", ...rest }, ref) => {
+  ({ children, className, colorScheme, size, ...rest }, ref) => {
     const classNameMerged = useMergedClassName(
       "btn",
-      colorSchemeVariants[colorScheme],
+      colorScheme && colorSchemeVariants[colorScheme],
+      size && sizeVariants[size],
       className,
     );
 
