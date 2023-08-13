@@ -7,6 +7,8 @@ export function useDeleteCategoryMutation() {
   return useMutation(deleteCategory, {
     onSuccess: () => {
       queryClient.refetchQueries({ queryKey: "categories" });
+      queryClient.refetchQueries({ queryKey: "products" });
+      queryClient.refetchQueries({ queryKey: "basket" });
     },
   });
 }
