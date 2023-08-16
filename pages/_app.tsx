@@ -6,7 +6,7 @@ import { BasketDrawerProvider } from "@/features/basket";
 import {
   IdentityProvider,
   LoginFormModalProvider,
-  RegisterFormProvider,
+  RegisterFormModalProvider,
 } from "@/features/identity";
 import "@/styles/globals.css";
 
@@ -18,13 +18,13 @@ function MyApp({ Component, pageProps }: AppProps) {
       <Hydrate state={pageProps.dehydratedState}>
         <IdentityProvider>
           <BasketDrawerProvider>
-            <RegisterFormProvider>
+            <RegisterFormModalProvider>
               <LoginFormModalProvider>
                 <Navbar />
                 <Component {...pageProps} />
                 <Footer />
               </LoginFormModalProvider>
-            </RegisterFormProvider>
+            </RegisterFormModalProvider>
           </BasketDrawerProvider>
         </IdentityProvider>
       </Hydrate>
