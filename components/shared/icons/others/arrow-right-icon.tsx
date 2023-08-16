@@ -7,9 +7,9 @@ export const ArrowRightIcon = forwardRef<SVGSVGElement, ComponentProps<"svg">>(
         <path
           d="M15.25 0.75L19 4.5M19 4.5L15.25 8.25M19 4.5H1"
           stroke="white"
-          stroke-width="1.5"
-          stroke-linecap="round"
-          stroke-linejoin="round"
+          strokeWidth="1.5"
+          strokeLinecap="round"
+          strokeLinejoin="round"
         />
       </svg>
     );

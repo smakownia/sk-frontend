@@ -1,6 +1,6 @@
-import { HeroSection } from "@/components";
 import { NextPage } from "next";
 import Head from "next/head";
+import { HeroSection } from "@/components";
 
 const HomePage: NextPage = () => {
   return (

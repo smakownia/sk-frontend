@@ -1,14 +1,21 @@
 import { useMutation, useQueryClient } from "react-query";
+import { AxiosError } from "axios";
 import { deleteCategory } from "@/features/products";
+import { useIdentity } from "@/features/identity";
 
 export function useDeleteCategoryMutation() {
   const queryClient = useQueryClient();
+  const identity = useIdentity();
 
   return useMutation(deleteCategory, {
     onSuccess: () => {
       queryClient.refetchQueries({ queryKey: "categories" });
       queryClient.refetchQueries({ queryKey: "products" });
-      queryClient.refetchQueries({ queryKey: "basket" });
+    },
+    onError: (error: AxiosError) => {
+      if (error.response?.status === 401 || error.response?.status === 403) {
+        identity.logout();
+      }
     },
   });
 }

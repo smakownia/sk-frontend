@@ -10,7 +10,7 @@ export function HeroSection() {
           <Badge>Akceptujemy zamówienia online</Badge>
 
           <h1 className="text-5xl lg:text-6xl font-medium">
-            Niezrównane Smaki{" "}
+            Niezrównany Smak{" "}
             <span className="text-primary-500">Włoskiej Pizzy</span>
           </h1>
 
@@ -27,11 +27,23 @@ export function HeroSection() {
 
         <div className="relative hidden lg:block w-1/2">
           <div className="relative w-3/4 aspect-square">
-            <Image src="/images/hero-pizza-1.png" alt="pizza" fill />
+            <Image
+              src="/images/hero-pizza-1.png"
+              alt="pizza"
+              sizes="(max-width: 1024px) 0, 432px"
+              priority
+              fill
+            />
           </div>
 
           <div className="absolute top-1/2 right-0 -translate-y-1/2 w-3/5 aspect-square">
-            <Image src="/images/hero-pizza-2.png" alt="pizza" fill />
+            <Image
+              src="/images/hero-pizza-2.png"
+              alt="pizza"
+              sizes="(max-width: 1024px) 0, 346px"
+              priority
+              fill
+            />
           </div>
         </div>
       </div>

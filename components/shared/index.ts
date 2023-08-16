@@ -6,3 +6,4 @@ export * from "./drawer";
 export * from "./form";
 export * from "./table";
 export * from "./badge";
+export * from "./modal";

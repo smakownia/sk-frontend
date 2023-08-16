@@ -5,6 +5,7 @@ import { FormFields } from "./form-fields";
 import { FormInput } from "./form-input";
 import { FormErrorMessage } from "./form-error-message";
 import { FormSubmit } from "./form-submit";
+import { FormGlobalErrorMessage } from "./form-global-error-message";
 
 export const Form = Object.assign(FormRoot, {
   Field: FormField,
@@ -13,4 +14,5 @@ export const Form = Object.assign(FormRoot, {
   Input: FormInput,
   ErrorMessage: FormErrorMessage,
   Submit: FormSubmit,
+  GlobalErrorMessage: FormGlobalErrorMessage,
 });

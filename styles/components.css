@@ -15,13 +15,15 @@
   }
 
   .btn-primary {
-    @apply text-white bg-primary-500 hover:bg-primary-600;
+    @apply text-white bg-primary-500 hover:bg-primary-600 
+           disabled:bg-primary-400;
   }
   .btn-primary-light {
-    @apply text-primary-500 bg-primary-100 hover:bg-primary-200;
+    @apply text-primary-500 bg-primary-100 hover:bg-primary-200 
+           disabled:bg-primary-50;
   }
   .btn-white {
-    @apply text-black bg-white hover:bg-neutral-50;
+    @apply text-black bg-white hover:bg-neutral-50 disabled:bg-white;
   }
 
   .input {
