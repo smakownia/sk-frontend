@@ -59,13 +59,17 @@ export function RegisterFormModal() {
         <Form.Fields>
           <Form.Field name="email" isRequired>
             <Form.Label>Email</Form.Label>
-            <Form.Input placeholder="Email" />
+            <Form.Input placeholder="Email" autoComplete="email" />
             <Form.ErrorMessage />
           </Form.Field>
 
           <Form.Field name="password" isRequired>
             <Form.Label>Hasło</Form.Label>
-            <Form.Input type="password" placeholder="Hasło" />
+            <Form.Input
+              type="password"
+              placeholder="Hasło"
+              autoComplete="new-password"
+            />
             <Form.ErrorMessage />
           </Form.Field>
         </Form.Fields>

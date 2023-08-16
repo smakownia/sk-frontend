@@ -26,6 +26,7 @@ export async function createProduct(command: CreateProductCommand) {
     command,
     {
       headers: { "Content-Type": "multipart/form-data" },
+      withCredentials: true,
     },
   );
   return data;
@@ -35,18 +36,22 @@ export async function createCategory(command: CreateCategoryCommand) {
   const { data } = await apiPublicClient.post<Category>(
     "api/v1/categories",
     command,
+    { withCredentials: true },
   );
   return data;
 }
 
 export async function deleteProduct(id: string) {
-  const { data } = await apiPublicClient.delete<void>(`api/v1/products/${id}`);
+  const { data } = await apiPublicClient.delete<void>(`api/v1/products/${id}`, {
+    withCredentials: true,
+  });
   return data;
 }
 
 export async function deleteCategory(id: string) {
   const { data } = await apiPublicClient.delete<void>(
     `api/v1/categories/${id}`,
+    { withCredentials: true },
   );
   return data;
 }

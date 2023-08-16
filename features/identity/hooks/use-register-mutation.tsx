@@ -1,10 +1,10 @@
 import { useMutation } from "react-query";
-import { login, useIdentity } from "@/features/identity";
+import { register, useIdentity } from "@/features/identity";
 
-export function useLoginMutation() {
+export function useRegisterMutation() {
   const identity = useIdentity();
 
-  return useMutation(login, {
+  return useMutation(register, {
     onSuccess: (data) => identity.login(data),
   });
 }

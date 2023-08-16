@@ -3,6 +3,6 @@ import { getBasket } from "@/features/basket";
 
 export function useBasket() {
   return useQuery("basket", getBasket, {
-    refetchOnMount: (basket) => !Boolean(basket),
+    refetchInterval: 10000,
   });
 }

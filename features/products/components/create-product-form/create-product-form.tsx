@@ -9,17 +9,19 @@ import { CreateProductFormValues } from "./types";
 export function CreateProductForm() {
   const router = useRouter();
   const { data: categories } = useCategories();
-  const { mutateAsync: createProduct } = useCreateProductMutation();
+  const { mutateAsync: createProduct, isLoading } = useCreateProductMutation();
 
   const submitHandler = useCallback(
     async (values: CreateProductFormValues) => {
-      await createProduct({
-        ...values,
-        image: values.image!,
-        price: Math.ceil(values.price * 100),
-      });
+      try {
+        await createProduct({
+          ...values,
+          image: values.image!,
+          price: Math.ceil(values.price * 100),
+        });
 
-      router.push("/admin/produkty");
+        router.push("/admin/produkty");
+      } catch {}
     },
     [createProduct, router],
   );
@@ -30,7 +32,7 @@ export function CreateProductForm() {
       onSubmit={submitHandler}
       validationSchema={validationSchema}
     >
-      <h1 className="text-4xl font-medium">Stwórz Produkt</h1>
+      <h1 className="text-5xl font-medium">Stwórz Produkt</h1>
 
       <Form.Fields>
         <Form.Field name="categoryId" isRequired>
@@ -85,7 +87,9 @@ export function CreateProductForm() {
         </Form.Field>
       </Form.Fields>
 
-      <Form.Submit>Stwórz Produkt</Form.Submit>
+      <Form.Submit size="lg" isLoading={isLoading}>
+        Stwórz Produkt
+      </Form.Submit>
     </Form>
   );
 }

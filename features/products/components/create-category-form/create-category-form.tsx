@@ -20,13 +20,15 @@ const validationSchema = yup
 
 export function CreateCategoryForm() {
   const router = useRouter();
-  const { mutateAsync: createCategory } = useCreateCategoryMutation();
+  const { mutateAsync: createCategory, isLoading } =
+    useCreateCategoryMutation();
 
   const submitHandler = useCallback(
     async (values: CreateCategoryFormValues) => {
-      await createCategory(values);
-
-      router.push("/admin/kategorie");
+      try {
+        await createCategory(values);
+        router.push("/admin/kategorie");
+      } catch {}
     },
     [createCategory, router],
   );
@@ -37,7 +39,7 @@ export function CreateCategoryForm() {
       onSubmit={submitHandler}
       validationSchema={validationSchema}
     >
-      <h1 className="text-4xl font-medium">Stwórz Kategorie</h1>
+      <h1 className="text-5xl font-medium">Stwórz Kategorie</h1>
 
       <Form.Fields>
         <Form.Field name="name" isRequired>
@@ -47,7 +49,9 @@ export function CreateCategoryForm() {
         </Form.Field>
       </Form.Fields>
 
-      <Form.Submit>Stwórz Kategorie</Form.Submit>
+      <Form.Submit size="lg" isLoading={isLoading}>
+        Stwórz Kategorie
+      </Form.Submit>
     </Form>
   );
 }

@@ -20,10 +20,7 @@ export function IdentityProvider({ children }: IdentityProviderProps) {
   const login = useCallback(
     (data: IdentityResponse) => {
       setRole(data.role);
-      localStorage.setItem(
-        "identityExpires",
-        data.expires.toLocaleDateString(),
-      );
+      localStorage.setItem("identityExpires", data.expires.toString());
       localStorage.setItem("identityRole", data.role);
     },
     [setRole],
