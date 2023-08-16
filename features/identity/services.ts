@@ -24,5 +24,7 @@ export async function register(request: RegisterRequest) {
 }
 
 export async function logout() {
-  return await apiPublicClient.post("api/v1/identities/logout");
+  return await apiPublicClient.post("api/v1/identities/logout", undefined, {
+    withCredentials: true,
+  });
 }
