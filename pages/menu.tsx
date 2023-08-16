@@ -22,8 +22,8 @@ const MenuPage: NextPage = () => {
 export const getServerSideProps: GetServerSideProps = async () => {
   const queryClient = new QueryClient();
 
-  queryClient.prefetchQuery("categories", getCategories);
-  queryClient.prefetchQuery("products", getProducts);
+  await queryClient.prefetchQuery("categories", () => getCategories(true));
+  await queryClient.prefetchQuery("products", () => getProducts(true));
 
   return {
     props: {

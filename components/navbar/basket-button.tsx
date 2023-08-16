@@ -26,7 +26,7 @@ export function BasketButton() {
   const anyItems = useMemo(() => Boolean(basket?.totalItems), [basket]);
 
   return (
-    <NavButton onClick={basketDrawer.open}>
+    <NavButton aria-label="Otwórz basket" onClick={basketDrawer.open}>
       {anyItems && <ButtonBadge>{basket!.totalItems}</ButtonBadge>}
       <BasketIcon />
     </NavButton>

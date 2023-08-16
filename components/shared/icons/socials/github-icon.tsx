@@ -5,6 +5,7 @@ export const GithubIcon = forwardRef<SVGSVGElement, ComponentProps<"svg">>(
     return (
       <svg
         ref={ref}
+        aria-hidden="true"
         fill="currentColor"
         viewBox="2 2 20 19.54"
         className="w-5 h-5"

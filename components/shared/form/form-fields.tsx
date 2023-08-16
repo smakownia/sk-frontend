@@ -1,5 +1,11 @@
-import { ReactNode } from "react";
+import { ComponentProps, forwardRef } from "react";
 
-export function FormFields({ children }: { children: ReactNode }) {
-  return <div className="flex flex-col gap-4">{children}</div>;
-}
+type FormFieldsProps = ComponentProps<"div">;
+
+export const FormFields = forwardRef<HTMLDivElement, FormFieldsProps>(
+  (props, ref) => {
+    return <div ref={ref} className="flex flex-col gap-4" {...props} />;
+  },
+);
+
+FormFields.displayName = "Form.Fields";

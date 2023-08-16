@@ -8,7 +8,7 @@ type FormRootProps<T extends Record<string, any>> = {
   defaultValues: DefaultValues<T>;
   validationSchema: ObjectSchema<any, any, any, "">;
   onSubmit: (values: T) => void;
-  children: ReactNode;
+  children?: ReactNode;
 } & Omit<ComponentProps<"form">, "onSubmit">;
 
 export function FormRoot<T extends Record<string, any>>(

@@ -6,8 +6,9 @@ const nextConfig = {
     return config;
   },
   images: {
-    domains: [process.env.NEXT_PUBLIC_STATIC_FILES_DOMAIN]
-  }
+    domains: [process.env.STATIC_FILES_DOMAIN],
+  },
+  output: "standalone",
 };
 
 module.exports = nextConfig;

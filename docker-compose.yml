@@ -1,0 +1,20 @@
+version: "3.8"
+
+services:
+  frontend:
+    build: ./
+    ports:
+      - 3000:3000
+    volumes:
+      - frontend-cache-images:/app/.next/cache/images
+      - frontend-node_modules:/app/node_modules
+    networks:
+      - smakownia
+
+volumes:
+  frontend-cache-images:
+  frontend-node_modules:
+
+networks:
+  smakownia:
+    name: smakownia
