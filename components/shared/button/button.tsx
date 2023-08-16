@@ -4,6 +4,7 @@ import { useMergedClassName } from "@/hooks";
 type ButtonProps = ComponentProps<"button"> & {
   colorScheme?: keyof typeof colorSchemeVariants;
   size?: keyof typeof sizeVariants;
+  isLoading?: boolean;
 };
 
 export const sizeVariants = {
@@ -17,8 +18,17 @@ export const colorSchemeVariants = {
   primaryLight: "btn-primary-light",
 };
 
+function ButtonSpiner() {
+  return (
+    <div
+      className={`w-4 h-4 rounded-full border-2 border-current
+                  border-b-transparent animate-spin`}
+    />
+  );
+}
+
 export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
-  ({ children, className, colorScheme, size, ...rest }, ref) => {
+  ({ children, className, colorScheme, size, isLoading, ...rest }, ref) => {
     const classNameMerged = useMergedClassName(
       "btn",
       colorScheme && colorSchemeVariants[colorScheme],
@@ -27,7 +37,13 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
     );
 
     return (
-      <button ref={ref} className={classNameMerged} {...rest}>
+      <button
+        ref={ref}
+        className={classNameMerged}
+        disabled={isLoading}
+        {...rest}
+      >
+        {isLoading && <ButtonSpiner />}
         {children}
       </button>
     );

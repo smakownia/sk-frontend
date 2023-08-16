@@ -5,7 +5,7 @@ import { Footer, Navbar } from "@/components";
 import { BasketDrawerProvider } from "@/features/basket";
 import {
   IdentityProvider,
-  LoginFormProvider,
+  LoginFormModalProvider,
   RegisterFormProvider,
 } from "@/features/identity";
 import "@/styles/globals.css";
@@ -19,11 +19,11 @@ function MyApp({ Component, pageProps }: AppProps) {
         <IdentityProvider>
           <BasketDrawerProvider>
             <RegisterFormProvider>
-              <LoginFormProvider>
+              <LoginFormModalProvider>
                 <Navbar />
                 <Component {...pageProps} />
                 <Footer />
-              </LoginFormProvider>
+              </LoginFormModalProvider>
             </RegisterFormProvider>
           </BasketDrawerProvider>
         </IdentityProvider>
