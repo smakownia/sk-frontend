@@ -46,6 +46,11 @@ export function LoginFormModal() {
       >
         <h2 className="text-4xl font-medium">Zaloguj się</h2>
 
+        <span className="text-sm text-neutral-600">
+          Zaloguj się jako admin email: aruzo@aruzo.it hasło: aruzo123 następnie
+          kliknij ikone użytkownika i &quotpanel admina&quot
+        </span>
+
         <Form.GlobalErrorMessage show={isError}>
           Nie udało się zalogować
         </Form.GlobalErrorMessage>
